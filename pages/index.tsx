@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 				<FadeInSection>
 					<header className="md:flex md:flex-row md:gap-40 mt-10">
 						<Image
-							src={require('../public/nabil-bw-2.png')}
+							src={require('../public/nabil-color.png')}
 							alt="Nabil"
 						/>
 						{/* <div></div> */}

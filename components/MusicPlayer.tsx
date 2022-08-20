@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Link from 'next/link';
 import { Audio } from 'react-loader-spinner';
-import getCurrentlyListeningSong from '../api/getCurrentlyListeningSong';
+import getCurrentlyListeningSong from '../classes/getCurrentlyListeningSong';
 
 // Component to wrap and fetch data
 const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
@@ -44,7 +44,7 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 		})();
 	}, []);
 	return (
-		<AnimatePresence mode="wait">
+		<AnimatePresence mode="sync">
 			{isCurrentlyListening && !error && (
 				<MusicPlayerComponent
 					imageUrl={imageUrl!}
