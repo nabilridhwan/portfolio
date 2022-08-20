@@ -1,5 +1,5 @@
 .project_card {
-	@apply border border-white rounded-xl p-4;
+	@apply border border-white/25 my-5 md:m-0 rounded-xl p-4;
 }
 
 .project_card h4 {
@@ -20,6 +20,10 @@
 
 .button {
 	@apply text-center text-sm bg-white text-black px-8 py-2 rounded-lg;
+}
+
+.button_secondary {
+	@apply text-center text-sm border border-white px-8 py-2 rounded-lg;
 }
 
 .link_wrapper {
