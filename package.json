@@ -21,6 +21,7 @@
 		"react-loader-spinner": "^5.1.7-beta.1"
 	},
 	"devDependencies": {
+		"@types/luxon": "^3.0.0",
 		"@types/node": "18.7.6",
 		"@types/react": "18.0.17",
 		"@types/react-dom": "18.0.6",
