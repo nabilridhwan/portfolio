@@ -28,6 +28,10 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 	);
 
 	useEffect(() => {
+		if (status === 'loading') {
+			setIsCurrentlyListening(false);
+		}
+
 		if (status === 'success') {
 			if (Object.keys(data).length === 0) {
 				return;
@@ -51,6 +55,7 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 		}
 
 		if (status === 'error') {
+			setIsCurrentlyListening(false);
 			setError(true);
 		}
 	}, [status, data]);
@@ -86,7 +91,7 @@ function MusicPlayerComponent({
 }: MusicPlayerComponentProps) {
 	return (
 		<motion.div
-			initial={{ opacity: 0 }}
+			initial={{ opacity: 0, y: -30 }}
 			animate={{
 				y: 0,
 				opacity: 1,
@@ -96,6 +101,10 @@ function MusicPlayerComponent({
 					duration: 0.5,
 					delay: 0.2,
 				},
+			}}
+			exit={{
+				y: 30,
+				opacity: 0,
 			}}
 			className="my-10 text-white/70 flex flex-col items-center gap-2"
 		>
