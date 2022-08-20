@@ -1,0 +1,34 @@
+.project_card * {
+	/* @apply bg-red-500; */
+	@apply my-5;
+}
+
+.tag_section {
+	@apply flex;
+}
+
+.tag_section > div {
+	@apply border border-white px-5 py-1 rounded-md text-sm;
+}
+
+.project_card {
+	@apply lg:grid lg:grid-cols-2;
+}
+
+.outline_text {
+	-webkit-text-stroke: 0.8px white;
+	color: black;
+}
+
+.title {
+	@apply text-white/50 outline_text;
+	@apply text-5xl font-extrabold;
+}
+
+.project_card p {
+	@apply text-lg text-white/50;
+}
+
+.links {
+	@apply underline text-red-500;
+}
