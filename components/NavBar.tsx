@@ -6,18 +6,25 @@ const NavBar = () => {
 		<nav className={styles.navbar}>
 			<ul>
 				<li>
-					<Link href="/">Home</Link>
-
-					<div className="h-0.5 w-100 bg-white" />
+					<Link href="/">
+						<a>
+							Home
+							<div className="h-0.5 w-100 bg-white" />
+						</a>
+					</Link>
 				</li>
 				{/* <li>
 					<Link href="/about">About</Link>
 					<div className="h-0.5 w-100 bg-white" />
-				</li>
-				<li>
-					<Link href="/projects">Projects</Link>
-					<div className="h-0.5 w-100 bg-white" />
 				</li> */}
+				<li>
+					<Link href="/work">
+						<a>
+							My Works
+							<div className="h-0.5 w-100 bg-white" />
+						</a>
+					</Link>
+				</li>
 			</ul>
 		</nav>
 	);

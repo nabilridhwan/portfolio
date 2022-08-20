@@ -1,0 +1,27 @@
+.project_card {
+	@apply border border-white rounded-xl p-4;
+}
+
+.project_card h4 {
+	@apply text-xl font-bold;
+}
+
+.stats {
+	@apply flex text-sm;
+}
+
+.tag_section {
+	@apply flex flex-wrap gap-2;
+}
+
+.tag_section > div {
+	@apply border border-white px-5 py-1 rounded-md text-xs;
+}
+
+.button {
+	@apply text-center text-sm bg-white text-black px-8 py-2 rounded-lg;
+}
+
+.link_wrapper {
+	@apply my-5 flex gap-2 flex-wrap;
+}
