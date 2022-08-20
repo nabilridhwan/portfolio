@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { NextComponentType } from 'next';
 import { useEffect, useState } from 'react';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { Audio } from 'react-loader-spinner';
 import getCurrentlyListeningSong from '../classes/getCurrentlyListeningSong';
@@ -14,6 +15,41 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 	const [spotifyLink, setSpotifyLink] = useState();
 	const [songName, setSongName] = useState();
 	const [artistString, setArtistString] = useState();
+
+	const query = useQuery(
+		['getCurrentlyListeningSong'],
+		getCurrentlyListeningSong,
+		{
+			refetchOnMount: true,
+			refetchOnWindowFocus: true,
+			refetchInterval: 1000 * 15, // 15 seconds
+			onSuccess: (data) => {
+				if (data === '') {
+					return;
+				}
+
+				const image_url = data.item?.album.images[2].url;
+				const spotify_link = data.item?.external_urls.spotify;
+				const song_name = data.item?.name;
+				const artist_string = data.item?.artists
+					.map((a: any) => a.name)
+					.join(', ');
+
+				setImageUrl(image_url);
+				setSpotifyLink(spotify_link);
+				setSongName(song_name);
+				setArtistString(artist_string);
+
+				setError(false);
+
+				setIsCurrentlyListening(true);
+			},
+
+			onError: () => {
+				setError(true);
+			},
+		}
+	);
 
 	useEffect(() => {
 		(async () => {
