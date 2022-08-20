@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import { FaGithub, FaHeadphones, FaInstagram, FaSpotify } from 'react-icons/fa';
+import { FaGithub, FaHeadphones, FaSpotify } from 'react-icons/fa';
 import { SiCodewars } from 'react-icons/si';
 import styles from '../styles/Footer.module.css';
 
@@ -19,12 +19,12 @@ export default function Footer() {
 					<FaGithub />
 				</a>
 
-				<a
+				{/* <a
 					href="https://instagram.com/nabilridhwn"
 					className={styles.icon}
 				>
 					<FaInstagram />
-				</a>
+				</a> */}
 
 				<a href="https://sptfy.com/nabz" className={styles.icon}>
 					<FaSpotify />
