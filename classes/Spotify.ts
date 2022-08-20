@@ -34,7 +34,7 @@ export default class Spotify {
 			},
 		});
 
-		if (!response.data) {
+		if (!response.data || !response.data.item) {
 			return {};
 		}
 

@@ -103,14 +103,25 @@ function MusicPlayerComponent({
 				// wrapperClass="wrapper-class"
 				visible={true}
 			/>
-			<p className="text-sm text-center my-3">
-				I&apos;m currently listening to{' '}
-				<Link href={spotifyLink}>
-					<span className="text-white underline cursor-pointer">
-						{songName} by {artistString}
-					</span>
-				</Link>
-			</p>
+
+			<div>
+				<p className="text-sm text-center my-3">
+					I&apos;m currently listening to{' '}
+					<Link href={spotifyLink}>
+						<a>
+							<span className="text-white underline cursor-pointer">
+								{songName} by {artistString}
+							</span>
+
+							{/* <img
+								src={imageUrl}
+								alt={songName}
+								className="mt-1 md:mt-0 ml-2 border-[0.8px] border-white w-6 h-6 inline"
+							/> */}
+						</a>
+					</Link>
+				</p>
+			</div>
 		</motion.div>
 	);
 }
