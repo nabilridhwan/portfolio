@@ -1,10 +1,8 @@
+import axios from 'axios';
 export default async function getCurrentlyListeningSong() {
-	return fetch('/api/currently_listening', {
+	const data = await axios.get('/api/currently_listening', {
 		method: 'GET',
-	})
-		.then((res) => res.json())
-		.then((json) => {
-			console.log(json);
-			return json.data;
-		});
+	});
+
+	return data.data.data;
 }
