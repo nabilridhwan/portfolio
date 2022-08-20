@@ -84,6 +84,7 @@ export default function ProjectCard(props: ProjectCardProps) {
 			<div className={styles.link_wrapper}>
 				<Link href={props.links.github!}>
 					<motion.a
+						href={props.links.github!}
 						style={{ cursor: 'pointer' }}
 						whileHover={{ scale: 1.05 }}
 						whileTap={{
@@ -103,6 +104,7 @@ export default function ProjectCard(props: ProjectCardProps) {
 					>
 						<motion.a
 							style={{ cursor: 'pointer' }}
+							href={props.links.page!}
 							whileHover={{ scale: 1.05 }}
 							whileTap={{
 								scale: 0.95,
