@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 		<Container>
 			<FullHeightSection>
 				<FadeInSection>
-					<header className="md:flex md:flex-row md:gap-40 mt-10">
+					<header className="md:grid md:grid-cols-2 md:gap-40 mt-10">
 						<Image
 							src={require('../public/nabil-color.png')}
 							alt="Nabil"
