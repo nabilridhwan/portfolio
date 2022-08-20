@@ -23,6 +23,7 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 			refetchOnMount: true,
 			refetchOnWindowFocus: true,
 			refetchInterval: 1000 * 15, // 15 seconds
+			staleTime: 1000 * 15,
 			onSuccess: (data) => {
 				if (data === '') {
 					return;

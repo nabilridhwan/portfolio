@@ -1,4 +1,10 @@
+import { DateTime } from 'luxon';
 import Link from 'next/link';
+import {
+	IoCodeSlashOutline,
+	IoStarOutline,
+	IoTimeOutline,
+} from 'react-icons/io5';
 import styles from '../styles/ProjectCard.module.css';
 
 type ProjectCardProps = {
@@ -16,10 +22,15 @@ type ProjectCardProps = {
 	};
 };
 
+function convertToDateString(date: string) {
+	// Return first letter capitalised
+	return date.charAt(0).toUpperCase() + date.slice(1);
+}
+
 export default function ProjectCard(props: ProjectCardProps) {
 	return (
 		<div className={styles.project_card}>
-			<div className={styles.tag_section}>
+			<div className={styles.tag_section + ' mb-4'}>
 				{props.tags.map((tag, index) => (
 					<div key={index}>{tag}</div>
 				))}
@@ -27,12 +38,29 @@ export default function ProjectCard(props: ProjectCardProps) {
 
 			<h4>{props.title}</h4>
 
-			<p className="muted">{props.description}</p>
+			<p className="muted text-sm my-3">
+				{props.description || 'No description provided'}
+			</p>
 
 			<div className={styles.stats}>
-				<p>{props.stars}</p>
-				<p>{props.createdAt.toString()}</p>
-				<p>{props.language}</p>
+				<p>
+					<IoStarOutline className="inline" /> {props.stars}
+				</p>
+				<p>
+					<IoTimeOutline className="inline" />{' '}
+					{convertToDateString(
+						DateTime.fromJSDate(
+							props.createdAt
+						).toRelativeCalendar()!
+					)}
+				</p>
+
+				{props.language && (
+					<p>
+						<IoCodeSlashOutline className="inline" />{' '}
+						{props.language}
+					</p>
+				)}
 			</div>
 
 			<div className={styles.link_wrapper}>

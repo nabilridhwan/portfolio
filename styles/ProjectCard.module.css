@@ -7,7 +7,7 @@
 }
 
 .stats {
-	@apply flex text-sm;
+	@apply flex gap-3 text-sm;
 }
 
 .tag_section {
