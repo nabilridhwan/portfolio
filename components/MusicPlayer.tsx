@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { NextComponentType } from 'next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
@@ -18,14 +18,14 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 
 	const query = useQuery(
 		['getCurrentlyListeningSong'],
-		getCurrentlyListeningSong,
+		async () => await getCurrentlyListeningSong(),
 		{
 			refetchOnMount: true,
 			refetchOnWindowFocus: true,
 			refetchInterval: 1000 * 15, // 15 seconds
 			staleTime: 1000 * 15,
 			onSuccess: (data) => {
-				if (data === '') {
+				if (Object.keys(data).length === 0) {
 					return;
 				}
 
@@ -52,34 +52,6 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 		}
 	);
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const data = await getCurrentlyListeningSong();
-				if (data === '') {
-					return;
-				}
-
-				const image_url = data.item?.album.images[2].url;
-				const spotify_link = data.item?.external_urls.spotify;
-				const song_name = data.item?.name;
-				const artist_string = data.item?.artists
-					.map((a: any) => a.name)
-					.join(', ');
-
-				setImageUrl(image_url);
-				setSpotifyLink(spotify_link);
-				setSongName(song_name);
-				setArtistString(artist_string);
-
-				setError(false);
-
-				setIsCurrentlyListening(true);
-			} catch (error) {
-				setError(true);
-			}
-		})();
-	}, []);
 	return (
 		<AnimatePresence mode="sync">
 			{isCurrentlyListening && !error && (
@@ -100,42 +72,6 @@ type MusicPlayerComponentProps = {
 	songName: string;
 	artistString: string;
 };
-
-// Actual component
-// function MusicPlayerComponent({
-// 	imageUrl,
-// 	spotifyLink,
-// 	songName,
-// 	artistString,
-// }: MusicPlayerComponentProps) {
-// 	return (
-// 		<motion.div
-// 			initial={{ opacity: 0 }}
-// 			animate={{
-// 				y: 0,
-// 				opacity: 1,
-// 				transition: {
-// 					type: 'tween',
-// 					ease: 'easeOut',
-// 					duration: 0.5,
-// 					delay: 0.2,
-// 				},
-// 			}}
-// 			className="my-10 text-white/70"
-// 		>
-// 			<p className="text-sm text-center my-3">
-// 				I&apos;m currently listening to
-// 			</p>
-// 			<div className="flex border border-white/70 rounded-lg p-2 gap-3  w-fit m-auto items-center justify-center">
-// 				<img className="w-10 h-10" src={imageUrl} alt="" />
-// 				<div>
-// 					<p className="text-sm font-bold ">{songName}</p>
-// 					<p className="text-xs">{artistString}</p>
-// 				</div>
-// 			</div>
-// 		</motion.div>
-// 	);
-// }
 
 function MusicPlayerComponent({
 	imageUrl,
