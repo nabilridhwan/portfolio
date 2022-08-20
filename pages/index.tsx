@@ -9,11 +9,13 @@ import Project from '../components/Project';
 const Home: NextPage = () => {
 	return (
 		<Container>
-			<FullHeightSection>
-				<FadeInSection>
-					<Header />
-				</FadeInSection>
-			</FullHeightSection>
+			<div className="my-10">
+				<FullHeightSection>
+					<FadeInSection>
+						<Header />
+					</FadeInSection>
+				</FullHeightSection>
+			</div>
 
 			<FullHeightSection>
 				<FadeInSection>

@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { NextComponentType } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 	const [songName, setSongName] = useState();
 	const [artistString, setArtistString] = useState();
 
-	const query = useQuery(
+	const { data, isLoading, status } = useQuery(
 		['getCurrentlyListeningSong'],
 		async () => await getCurrentlyListeningSong(),
 		{
@@ -24,36 +24,41 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 			refetchOnWindowFocus: true,
 			refetchInterval: 1000 * 15, // 15 seconds
 			staleTime: 1000 * 15,
-			onSuccess: (data) => {
-				if (Object.keys(data).length === 0) {
-					return;
-				}
-
-				const image_url = data.item?.album.images[2].url;
-				const spotify_link = data.item?.external_urls.spotify;
-				const song_name = data.item?.name;
-				const artist_string = data.item?.artists
-					.map((a: any) => a.name)
-					.join(', ');
-
-				setImageUrl(image_url);
-				setSpotifyLink(spotify_link);
-				setSongName(song_name);
-				setArtistString(artist_string);
-
-				setError(false);
-
-				setIsCurrentlyListening(true);
-			},
-
-			onError: () => {
-				setError(true);
-			},
 		}
 	);
 
+	useEffect(() => {
+		if (status === 'success') {
+			if (Object.keys(data).length === 0) {
+				return;
+			}
+
+			const image_url = data.item?.album.images[2].url;
+			const spotify_link = data.item?.external_urls.spotify;
+			const song_name = data.item?.name;
+			const artist_string = data.item?.artists
+				.map((a: any) => a.name)
+				.join(', ');
+
+			setImageUrl(image_url);
+			setSpotifyLink(spotify_link);
+			setSongName(song_name);
+			setArtistString(artist_string);
+
+			setError(false);
+
+			setIsCurrentlyListening(true);
+		}
+
+		if (status === 'error') {
+			setError(true);
+		}
+	}, [status, data]);
+
 	return (
 		<AnimatePresence mode="sync">
+			{isLoading ||
+				(!isCurrentlyListening && <div className="my-20 h-1" />)}
 			{isCurrentlyListening && !error && (
 				<MusicPlayerComponent
 					imageUrl={imageUrl!}
