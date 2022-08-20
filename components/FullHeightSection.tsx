@@ -12,7 +12,7 @@ export default function FullHeightSection({ children }: { children: any }) {
 		<motion.div
 			// ref={ref}
 			// style={{ y }}
-			className={styles.full_height_section + ' my-14'}
+			className={styles.full_height_section}
 		>
 			<div className="full-height-section-content">{children}</div>
 		</motion.div>
