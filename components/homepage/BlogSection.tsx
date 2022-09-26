@@ -36,7 +36,11 @@ export default function BlogSection() {
 							}}
 							className="relative rounded-xl border border-white/20"
 						>
-							<img src={item.coverImage} className="rounded-xl" />
+							<img
+								src={item.coverImage}
+								className="rounded-xl"
+								alt="Album cover image"
+							/>
 
 							{/* Gradient overlay */}
 							<div className="absolute rounded-xl w-full h-full bg-gradient-to-b from-transparent to-black top-0 left-0" />

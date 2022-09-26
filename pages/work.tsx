@@ -1,10 +1,10 @@
 import { AnimatePresence } from 'framer-motion';
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import getAllGithubRepos from '../classes/getAllGithubRepos';
 import Container from '../components/Container';
 import FadeInSection from '../components/FadeInSection';
 import ProjectCard from '../components/ProjectCard';
+import getAllGithubRepos from '../services/getAllGithubRepos.service';
 
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../components/LoadingSpinner';
