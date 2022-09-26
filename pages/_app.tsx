@@ -2,7 +2,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import '../styles/globals.css';
 
@@ -16,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</Head>
 			<NavBar />
 			<Component {...pageProps} />
-			<Footer />
+			{/* <Footer /> */}
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
 	);

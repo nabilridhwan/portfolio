@@ -111,9 +111,11 @@ const Project: NextPage = () => {
 									createdAt={new Date(repo.created_at)}
 									links={{
 										github: repo.html_url,
-										page: repo.has_pages
-											? `https://nabilridhwan.github.io/${repo.name}`
-											: undefined,
+										page: repo.homepage
+											? repo.homepage
+											: repo.has_pages
+											? repo.html_url
+											: '',
 									}}
 								/>
 							))}

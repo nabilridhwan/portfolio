@@ -3,6 +3,10 @@
 	@apply my-5;
 }
 
+.project_card p {
+	@apply text-sm;
+}
+
 .tag_section {
 	@apply flex;
 }
