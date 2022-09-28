@@ -4,5 +4,5 @@ export default async function getRecentlyPlayedSongs() {
 		method: 'GET',
 	});
 
-	return data.data.data;
+	return data.data.data[0] || null;
 }

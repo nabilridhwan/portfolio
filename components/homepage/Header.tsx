@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from '../../styles/Header.module.css';
 import ArrowDownIndicator from '../ArrowDownIndicator';
-import MusicPlayer from '../MusicPlayer';
+import MusicPlayerSection from './MusicPlayer';
 
 const Header = () => {
 	return (
@@ -32,7 +32,7 @@ const Header = () => {
 						</p>
 					</div>
 
-					<MusicPlayer />
+					<MusicPlayerSection />
 
 					<ArrowDownIndicator />
 				</div>

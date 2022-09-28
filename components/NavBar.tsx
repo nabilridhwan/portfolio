@@ -1,43 +1,87 @@
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ReactNode, useEffect, useState } from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import styles from '../styles/Navbar.module.css';
 
+interface NavbarLink {
+	displayItem: ReactNode;
+	link: string;
+}
+
+const navbarItems: NavbarLink[] = [
+	{
+		displayItem: 'Home',
+		link: '/',
+	},
+	{
+		displayItem: 'My Works',
+		link: '/work',
+	},
+
+	{
+		displayItem: (
+			<>
+				Blog
+				<FaExternalLinkAlt size={13} className="inline-block ml-2" />
+			</>
+		),
+		link: 'https://blog.nabilridhwan.com',
+	},
+	{
+		displayItem: 'About',
+		link: '/about',
+	},
+];
+
+function isActive(location: Location, navbarLink: NavbarLink) {
+	console.log(location.pathname, navbarLink.link);
+	console.log(location.pathname == navbarLink.link);
+	return location.pathname == navbarLink.link;
+}
+
 const NavBar = () => {
+	const [loc, setLoc] = useState<Location | null>(null);
+
+	useEffect(() => {
+		setLoc(window.location);
+	}, []);
+
 	return (
 		<nav className={styles.navbar}>
 			<ul>
-				<li>
-					<Link href="/">
-						<a>
-							Home
-							<div className="h-0.5 w-100 bg-white" />
-						</a>
-					</Link>
-				</li>
+				{navbarItems.map((item, index) => (
+					<li
+						key={index}
+						className="flex flex-col justify-center items-center relative"
+					>
+						<Link href={item.link}>
+							<a>{item.displayItem}</a>
+						</Link>
 
-				<li>
-					<Link href="/work">
-						<a>
-							My Works
-							<div className="h-0.5 w-100 bg-white" />
-						</a>
-					</Link>
-				</li>
-
-				<li>
-					<Link href="https://blog.nabilridhwan.com">
-						<a>
-							Blog
-							<FaExternalLinkAlt className="inline-block ml-2" />
-							<div className="h-0.5 w-100 bg-white" />
-						</a>
-					</Link>
-				</li>
-
-				<li>
-					<Link href="/about">About</Link>
-					<div className="h-0.5 w-100 bg-white" />
-				</li>
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{
+								opacity: 1,
+								width:
+									loc && isActive(loc, item) ? '20px' : '0',
+								height:
+									loc && isActive(loc, item) ? '3px' : '0px',
+							}}
+							exit={{
+								opacity: 0,
+								width: '0%',
+								height: '0px',
+							}}
+							style={{
+								backgroundColor: 'white',
+								position: 'absolute',
+								bottom: '-10px',
+								borderRadius: '5px',
+							}}
+						/>
+					</li>
+				))}
 			</ul>
 		</nav>
 	);

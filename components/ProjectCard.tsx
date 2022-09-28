@@ -37,7 +37,7 @@ export default function ProjectCard(props: ProjectCardProps) {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			style={{
-				backgroundColor: 'transparent',
+				backgroundColor: 'black',
 				boxShadow: 'none',
 			}}
 			whileHover={{

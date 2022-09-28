@@ -37,10 +37,7 @@ export default function Footer() {
 					<SiCodewars />
 				</a>
 
-				<a
-					href="https://musicnapp.herokuapp.com/user/nabil"
-					className={styles.icon}
-				>
+				<a href="https://nabil.musicnapp.com" className={styles.icon}>
 					<FaHeadphones />
 				</a>
 			</div>

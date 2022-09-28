@@ -1,16 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { NextComponentType } from 'next';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useQuery } from '@tanstack/react-query';
 import { DateTime } from 'luxon';
 import Link from 'next/link';
 import { Audio } from 'react-loader-spinner';
-import getCurrentlyListeningSong from '../services/getCurrentlyListeningSong.service';
-import getRecentlyPlayedSongs from '../services/getRecentlyPlayedSongs.service';
+import getCurrentlyListeningSong from '../../services/getCurrentlyListeningSong.service';
+import getRecentlyPlayedSongs from '../../services/getRecentlyPlayedSongs.service';
 
 // Component to wrap and fetch data
-const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
+const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
 	const [error, setError] = useState(true);
 	const [isCurrentlyListening, setIsCurrentlyListening] = useState(false);
 	const [imageUrl, setImageUrl] = useState();
@@ -64,20 +64,24 @@ const MusicPlayer: NextComponentType<{}, {}, {}> = () => {
 	}, [status, data]);
 
 	return (
-		<AnimatePresence mode="sync">
-			{isLoading ||
-				(!isCurrentlyListening && <div className="my-20 h-1" />)}
-			{isCurrentlyListening && !error && (
-				<CurrentlyPlayingMusicPlayerComponent
-					imageUrl={imageUrl!}
-					spotifyLink={spotifyLink!}
-					songName={songName!}
-					artistString={artistString!}
-				/>
-			)}
+		<>
+			{isLoading && <div className="my-20 h-1" />}
 
-			{!isCurrentlyListening && <RecentlyPlayedMusicPlayerComponent />}
-		</AnimatePresence>
+			<AnimatedComponent>
+				{isCurrentlyListening && !error && (
+					<CurrentlyPlayingMusicPlayerComponent
+						imageUrl={imageUrl!}
+						spotifyLink={spotifyLink!}
+						songName={songName!}
+						artistString={artistString!}
+					/>
+				)}
+
+				{!isCurrentlyListening && (
+					<RecentlyPlayedMusicPlayerComponent />
+				)}
+			</AnimatedComponent>
+		</>
 	);
 };
 
@@ -88,15 +92,9 @@ type MusicPlayerComponentProps = {
 	artistString: string;
 };
 
-function CurrentlyPlayingMusicPlayerComponent({
-	imageUrl,
-	spotifyLink,
-	songName,
-	artistString,
-}: MusicPlayerComponentProps) {
+function AnimatedComponent({ children }: { children: ReactNode }) {
 	return (
 		<motion.div
-			key={'1'}
 			initial={{ opacity: 0, y: -30 }}
 			animate={{
 				y: 0,
@@ -114,6 +112,19 @@ function CurrentlyPlayingMusicPlayerComponent({
 			}}
 			className="my-10 text-white/70 flex flex-col items-center gap-2"
 		>
+			{children}
+		</motion.div>
+	);
+}
+
+function CurrentlyPlayingMusicPlayerComponent({
+	imageUrl,
+	spotifyLink,
+	songName,
+	artistString,
+}: MusicPlayerComponentProps) {
+	return (
+		<>
 			<Audio
 				height="20"
 				width="20"
@@ -132,17 +143,12 @@ function CurrentlyPlayingMusicPlayerComponent({
 							<span className="text-white underline cursor-pointer">
 								{songName} by {artistString}
 							</span>
-
-							{/* <img
-								src={imageUrl}
-								alt={songName}
-								className="mt-1 md:mt-0 ml-2 border-[0.8px] border-white w-6 h-6 inline"
-							/> */}
 						</a>
 					</Link>
+					{/* <p className="text-xs my-2">Click to preview song!</p> */}
 				</p>
 			</div>
-		</motion.div>
+		</>
 	);
 }
 
@@ -176,7 +182,7 @@ function RecentlyPlayedMusicPlayerComponent() {
 				return;
 			}
 
-			let track = data[0];
+			let track = data;
 
 			const image_url = track.album_image;
 			const spotify_link = track.url;
@@ -201,37 +207,9 @@ function RecentlyPlayedMusicPlayerComponent() {
 	}, [status, data]);
 
 	return (
-		<motion.div
-			key={'2'}
-			initial={{ opacity: 0, y: -30 }}
-			animate={{
-				y: 0,
-				opacity: 1,
-				transition: {
-					type: 'tween',
-					ease: 'easeOut',
-					duration: 0.5,
-					delay: 0.2,
-				},
-			}}
-			exit={{
-				y: 30,
-				opacity: 0,
-			}}
-			className="my-10 text-white/70 flex flex-col items-center gap-2"
-		>
+		<>
 			{isRecentlyPlayed && (
 				<>
-					{/* <Audio
-						height="20"
-						width="20"
-						color="white"
-						ariaLabel="audio-waveform"
-						// wrapperStyle={{}}
-						// wrapperClass="wrapper-class"
-						visible={true}
-					/> */}
-
 					<div>
 						<p className="text-sm text-center my-3">
 							I was listening to{' '}
@@ -249,11 +227,13 @@ function RecentlyPlayedMusicPlayerComponent() {
 							</Link>{' '}
 							{DateTime.fromISO(playedAt).toRelative()}
 						</p>
+
+						{/* <p className="text-xs my-2">Click to preview song!</p> */}
 					</div>
 				</>
 			)}
-		</motion.div>
+		</>
 	);
 }
 
-export default MusicPlayer;
+export default MusicPlayerSection;
