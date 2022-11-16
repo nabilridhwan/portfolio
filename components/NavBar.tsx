@@ -1,8 +1,7 @@
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { ReactNode, useEffect, useState } from 'react';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import styles from '../styles/Navbar.module.css';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ReactNode, useEffect, useState } from "react";
+import styles from "../styles/Navbar.module.css";
 
 interface NavbarLink {
 	displayItem: ReactNode;
@@ -11,32 +10,38 @@ interface NavbarLink {
 
 const navbarItems: NavbarLink[] = [
 	{
-		displayItem: 'Home',
-		link: '/',
+		displayItem: "Home",
+		link: "/",
 	},
 	{
-		displayItem: 'My Works',
-		link: '/work',
+		displayItem: "My Works",
+		link: "/work",
 	},
 
+	// {
+	// 	displayItem: (
+	// 		<>
+	// 			Blog
+	// 			<FaExternalLinkAlt size={13} className="inline-block ml-2" />
+	// 		</>
+	// 	),
+	// 	link: "https://blog.nabilridhwan.com",
+	// },
+
+	// {
+	// 	displayItem: "Resume",
+	// 	link: "/resume",
+	// },
+
 	{
-		displayItem: (
-			<>
-				Blog
-				<FaExternalLinkAlt size={13} className="inline-block ml-2" />
-			</>
-		),
-		link: 'https://blog.nabilridhwan.com',
-	},
-	{
-		displayItem: 'About',
-		link: '/about',
+		displayItem: "About",
+		link: "/about",
 	},
 ];
 
 function isActive(location: Location, navbarLink: NavbarLink) {
-	console.log(location.pathname, navbarLink.link);
-	console.log(location.pathname == navbarLink.link);
+	// console.log(location.pathname, navbarLink.link);
+	// console.log(location.pathname == navbarLink.link);
 	return location.pathname == navbarLink.link;
 }
 
@@ -64,20 +69,20 @@ const NavBar = () => {
 							animate={{
 								opacity: 1,
 								width:
-									loc && isActive(loc, item) ? '20px' : '0',
+									loc && isActive(loc, item) ? "20px" : "0",
 								height:
-									loc && isActive(loc, item) ? '3px' : '0px',
+									loc && isActive(loc, item) ? "3px" : "0px",
 							}}
 							exit={{
 								opacity: 0,
-								width: '0%',
-								height: '0px',
+								width: "0%",
+								height: "0px",
 							}}
 							style={{
-								backgroundColor: 'white',
-								position: 'absolute',
-								bottom: '-10px',
-								borderRadius: '5px',
+								backgroundColor: "white",
+								position: "absolute",
+								bottom: "-10px",
+								borderRadius: "5px",
 							}}
 						/>
 					</li>

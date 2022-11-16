@@ -19,7 +19,7 @@ body {
 		);
 	padding: 0;
 	margin: 0;
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 }
 
 .outline_text {
@@ -38,11 +38,16 @@ body {
 }
 
 header h1 {
-	@apply text-8xl;
-	font-family: 'Inter', sans-serif;
+	@apply text-7xl;
+	font-family: "Inter", sans-serif;
 	line-height: 90%;
 	font-weight: 900;
 	margin-bottom: 0;
+}
+
+.scrollbar-none {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
 .muted {

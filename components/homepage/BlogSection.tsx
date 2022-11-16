@@ -1,14 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
-import fetchBlogItems from '../../services/fetchBlogItems.service';
-import BlogItemComponent from '../BlogItem';
-import LoadingSpinner from '../LoadingSpinner';
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import fetchBlogItems from "../../services/fetchBlogItems.service";
+import BlogItemComponent from "../BlogItem";
+import Carousel from "../Carousel";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function BlogSection() {
 	const [error, setError] = useState(false);
 
 	const { data, isLoading, status } = useQuery(
-		['getBlogItems'],
+		["getBlogItems"],
 		async () => await fetchBlogItems(),
 		{
 			refetchOnMount: true,
@@ -18,7 +19,7 @@ export default function BlogSection() {
 	);
 
 	useEffect(() => {
-		if (status === 'error') {
+		if (status === "error") {
 			setError(true);
 		}
 	}, [status]);
@@ -29,20 +30,18 @@ export default function BlogSection() {
 
 			{isLoading && <LoadingSpinner />}
 
-			{!error && (
-				<div className="grid md:grid-cols-2 gap-5 place-items-center">
-					{data &&
-						data.length > 0 &&
-						data.map((item, i) => (
-							<BlogItemComponent {...item} key={i} />
-						))}
-				</div>
+			{!error && data && data?.length > 0 && (
+				<Carousel numberOfItems={data.length} itemsToMoveBy={0.7}>
+					{data.map((item, index) => (
+						<BlogItemComponent key={index} {...item} />
+					))}
+				</Carousel>
 			)}
 
 			{error && (
 				<p className="muted text-center py-10 text-sm">
 					There was an error fetching the blog items. You can just
-					view my blog:{' '}
+					view my blog:{" "}
 					<a
 						href="https://blog.nabilridhwan.com"
 						target="_blank"
