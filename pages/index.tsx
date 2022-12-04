@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import { useRef } from "react";
 import Container from "../components/Container";
 import FadeInSection from "../components/FadeInSection";
-import FullHeightSection from "../components/FullHeightSection";
 import AboutMe from "../components/homepage/AboutMe";
 import BlogSection from "../components/homepage/BlogSection";
 import Header from "../components/homepage/Header";
@@ -11,6 +10,7 @@ import Project from "../components/Project";
 
 import musicn from "../public/musicn.png";
 import similarify from "../public/similarify.png";
+import troof from "../public/troof_promo.png";
 
 const Home: NextPage = () => {
 	const ref = useRef(null);
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 		damping: 100,
 	});
 
-	const y = useTransform(scrollYProgressSpring, [0, 0.85], ["100px", "0px"]);
+	const y = useTransform(scrollYProgressSpring, [0, 0.85], ["100px", "5px"]);
 
 	return (
 		<Container>
@@ -52,11 +52,10 @@ const Home: NextPage = () => {
 			</FadeInSection>
 
 			{/* About me section */}
-			<FullHeightSection>
-				<FadeInSection>
-					<AboutMe />
-				</FadeInSection>
-			</FullHeightSection>
+
+			<div className="my-48">
+				<AboutMe />
+			</div>
 
 			{/* Skills section */}
 			{/* <FullHeightSection>
@@ -87,40 +86,47 @@ const Home: NextPage = () => {
 				</FadeInSection>
 			</FullHeightSection> */}
 
-			<FullHeightSection ref={ref}>
-				<FadeInSection>
-					{/* <motion.h2
-						style={{
-							letterSpacing: y,
-							overflow: "hidden",
-							textTransform: "uppercase",
-						}}
-						className="section-title text-center"
-					>
-						Projects
-					</motion.h2> */}
+			<h2 className="section-title text-center overflow-hidden">
+				Projects
+			</h2>
 
-					<Project
-						img_src={similarify}
-						tags={["React"]}
-						title="Similarify"
-						links={{
-							page: "https://similarify.netlify.com",
-						}}
-						description="A fully client-side web application to allow Spotify users to discover new songs that they already like!"
-					/>
+			<p className="text-center muted text-lg">
+				(that I&apos;m proud of!~~)
+			</p>
 
-					<Project
-						img_src={musicn}
-						tags={["Next.js"]}
-						title="Musicn"
-						links={{
-							page: "https://musicn.vercel.app",
-						}}
-						description="A Next.js application rebuild of Musicn, An application to discover other users' music profile, what they're listening to, their top songs and more!"
-					/>
-				</FadeInSection>
-			</FullHeightSection>
+			<div className="lg:grid lg:grid-cols-3 place-items-center gap-3">
+				<Project
+					img_src={troof}
+					tags={["Next.js"]}
+					title="Troof!"
+					titleClassName="font-Playfair text-5xl"
+					links={{
+						page: "https://troof.nabilridhwan.com",
+					}}
+					description="Experience the ultimate social truth or dare game with Troof! - see, chat, and react together with your friends!
+							"
+				/>
+
+				<Project
+					img_src={similarify}
+					tags={["React"]}
+					title="Similarify"
+					links={{
+						page: "https://similarify.netlify.com",
+					}}
+					description="Expand your musical horizons with the Similarify - find new tunes based on the songs you already love! (Powered by Spotify)"
+				/>
+
+				<Project
+					img_src={musicn}
+					tags={["Next.js"]}
+					title="Musicn"
+					links={{
+						page: "https://musicn.vercel.app",
+					}}
+					description="Get a glimpse into the musical tastes of your friends and discover new tracks with the Next.js-powered Spotify Social app!"
+				/>
+			</div>
 		</Container>
 	);
 };

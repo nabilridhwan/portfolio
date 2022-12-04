@@ -1,10 +1,10 @@
+.project_card {
+	@apply bg-black my-10 p-5 border border-white/70 rounded-xl;
+}
+
 .project_card * {
 	/* @apply bg-red-500; */
 	@apply my-5;
-}
-
-.project_card p {
-	@apply text-sm;
 }
 
 .tag_section {
@@ -13,10 +13,6 @@
 
 .tag_section > div {
 	@apply border border-white px-5 py-1 rounded-md text-sm;
-}
-
-.project_card {
-	@apply lg:grid lg:grid-cols-2;
 }
 
 .outline_text {
@@ -30,7 +26,7 @@
 }
 
 .project_card p {
-	@apply text-lg text-white/50;
+	@apply text-lg text-white/50 mb-10;
 }
 
 .links {

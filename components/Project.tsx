@@ -1,14 +1,15 @@
-import { NextComponentType } from 'next';
-import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
-import styles from '../styles/Project.module.css';
-import FadeInSection from './FadeInSection';
+import { NextComponentType } from "next";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import styles from "../styles/Project.module.css";
+import FadeInSection from "./FadeInSection";
 
 type ProjectProps = {
 	img_src: string | StaticImageData;
 	title: string;
 	tags: string[];
 	description: string;
+	titleClassName?: string;
 	links?: {
 		page?: string;
 		github?: string;
@@ -22,11 +23,7 @@ const Project: NextComponentType<{}, {}, ProjectProps> = (
 	return (
 		<FadeInSection>
 			<section className={styles.project_card}>
-				<Image
-					src={props.img_src}
-					alt=""
-					className="border border-white"
-				/>
+				<Image src={props.img_src} alt="" />
 
 				<div>
 					{/* <div className={styles.tag_section}>
@@ -35,7 +32,15 @@ const Project: NextComponentType<{}, {}, ProjectProps> = (
 						))}
 					</div> */}
 
-					<h1 className={styles.title}>{props.title}</h1>
+					<h1
+						className={
+							props.titleClassName
+								? props.titleClassName
+								: styles.title
+						}
+					>
+						{props.title}
+					</h1>
 					<p className="text-sm">{props.description}</p>
 
 					{props.links?.page && (
