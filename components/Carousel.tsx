@@ -34,7 +34,7 @@ const Carousel = ({
 					}
 				});
 			},
-			{ threshold: 0.8 }
+			{ threshold: 0.8, rootMargin: "100% 0% 100% 0%" }
 		);
 
 		if (firstItemRef.current) {
@@ -63,7 +63,7 @@ const Carousel = ({
 					}
 				});
 			},
-			{ threshold: 0.8 }
+			{ threshold: 0.8, rootMargin: "100% 0% 100% 0%" }
 		);
 
 		if (lastItemRef.current) {
@@ -109,7 +109,7 @@ const Carousel = ({
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 						onClick={scrollLeft}
-						className="flex z-20 items-center justify-center w-12 h-12 bg-white bg-opacity-30 rounded-full drop-shadow-lg hover:bg-opacity-20 focus:outline-none"
+						className="flex z-20 items-center justify-center w-12 h-12 bg-white bg-opacity-50 rounded-full drop-shadow-lg hover:bg-opacity-20 focus:outline-none"
 					>
 						<IoArrowBack />
 					</motion.button>
@@ -122,7 +122,7 @@ const Carousel = ({
 						onClick={scrollRight}
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
-						className="flex z-20 items-center justify-center w-12 h-12 bg-white bg-opacity-30 rounded-full drop-shadow-xl hover:bg-opacity-20 focus:outline-none"
+						className="flex z-20 items-center justify-center w-12 h-12 bg-white bg-opacity-70 rounded-full drop-shadow-xl hover:bg-opacity-20 focus:outline-none"
 					>
 						<IoArrowForward />
 					</motion.button>

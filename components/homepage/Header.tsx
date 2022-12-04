@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import styles from '../../styles/Header.module.css';
-import ArrowDownIndicator from '../ArrowDownIndicator';
-import MusicPlayerSection from './MusicPlayer';
+import Image from "next/image";
+import styles from "../../styles/Header.module.css";
+import ArrowDownIndicator from "../ArrowDownIndicator";
+import MusicPlayerSection from "./MusicPlayer";
 
 const Header = () => {
 	return (
 		<header className="md:grid md:grid-cols-2 md:gap-40">
 			<Image
-				src={require('../../public/nabil-color.png')}
+				src={require("../../public/nabil-color.png")}
 				alt="Nabil"
 				objectFit="scale-down"
 				width={500}
@@ -20,7 +20,7 @@ const Header = () => {
 						<h1 className="relative">
 							<span className="outline_text">
 								Hello! <br /> I&lsquo;m
-							</span>{' '}
+							</span>{" "}
 							Nabil
 						</h1>
 					</div>

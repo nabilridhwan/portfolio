@@ -16,13 +16,13 @@ const BlogItemComponent = forwardRef<HTMLDivElement, BlogItem>(
 				onClick={() => {
 					window.location.href = url;
 				}}
-				className="w-[300px] md:w-[520px] h-full relative rounded-xl border border-white/20"
+				className="w-[300px] md:w-[520px] h-[300px] md:h-[350px] relative rounded-xl border border-white/20"
 			>
 				{/* Cover image */}
 				<picture>
 					<img
 						src={coverImage}
-						className="rounded-xl"
+						className="rounded-xl h-full w-full object-cover"
 						alt="Album cover image"
 					/>
 				</picture>

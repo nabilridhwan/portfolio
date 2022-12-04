@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 
 	return (
 		<Container>
-			<div className="mt-32">
+			<div className="mt-32 mb-14">
 				<FadeInSection>
 					<Header />
 				</FadeInSection>

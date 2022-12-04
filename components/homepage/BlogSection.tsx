@@ -31,7 +31,7 @@ export default function BlogSection() {
 			{isLoading && <LoadingSpinner />}
 
 			{!error && data && data?.length > 0 && (
-				<Carousel numberOfItems={data.length} itemsToMoveBy={0.7}>
+				<Carousel numberOfItems={data.length} itemsToMoveBy={1}>
 					{data.map((item, index) => (
 						<BlogItemComponent key={index} {...item} />
 					))}
