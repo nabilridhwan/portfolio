@@ -16,7 +16,7 @@ const BlogItemComponent = forwardRef<HTMLDivElement, BlogItem>(
 				onClick={() => {
 					window.location.href = url;
 				}}
-				className="w-[300px] md:w-[600px] relative rounded-xl border border-white/20"
+				className="w-[300px] md:w-[520px] h-full relative rounded-xl border border-white/20"
 			>
 				{/* Cover image */}
 				<picture>
@@ -31,7 +31,7 @@ const BlogItemComponent = forwardRef<HTMLDivElement, BlogItem>(
 				<div className="absolute rounded-xl w-full h-full bg-gradient-to-b from-transparent to-black top-0 left-0" />
 
 				{/* Text content */}
-				<div className="absolute bottom-5 px-4">
+				<div className="absolute bottom-5 px-4 w-full">
 					<h1 className="text-lg lg:text-3xl font-bold leading-snug">
 						{title}
 					</h1>

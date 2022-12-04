@@ -9,12 +9,12 @@ body {
 	background-size: 180px 180px;
 	background-image: linear-gradient(
 			to right,
-			rgba(255, 255, 255, 0.12) 1px,
+			rgba(255, 255, 255, 0.1) 1px,
 			transparent 1px
 		),
 		linear-gradient(
 			to bottom,
-			rgba(255, 255, 255, 0.12) 1px,
+			rgba(255, 255, 255, 0.1) 1px,
 			transparent 1px
 		);
 	padding: 0;

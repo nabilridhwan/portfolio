@@ -2,8 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { NextPage } from "next";
 import Image from "next/image";
 import Container from "../components/Container";
-import ContentSection from "../components/ContentSection";
-import FadeInSection from "../components/FadeInSection";
 
 // @ts-ignore
 // import pdf from "../public/resume.pdf";
@@ -37,13 +35,7 @@ const About: NextPage = () => {
 				</header>
 			</div>
 
-			<FadeInSection>
-				<ContentSection>
-					<h2>Download my resume below!</h2>
-
-					<iframe src={"resume.pdf"} />
-				</ContentSection>
-			</FadeInSection>
+			<iframe className="w-full h-[1000px]" src={"resume.pdf"} />
 		</Container>
 	);
 };

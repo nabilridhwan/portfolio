@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-import client from '../utils/apolloClient';
+import client from "../utils/apolloClient";
 
 export interface BlogItem {
 	dateAdded: string;
@@ -10,8 +10,8 @@ export interface BlogItem {
 	coverImage: string;
 }
 
-const fetchBlogItems = async (limit: number = 4): Promise<BlogItem[]> => {
-	const { data } = await client('https://api.hashnode.com').query({
+const fetchBlogItems = async (limit: number = 10): Promise<BlogItem[]> => {
+	const { data } = await client("https://api.hashnode.com").query({
 		query: gql`
 			query {
 				user(username: "nabilridhwan") {
@@ -46,7 +46,9 @@ const fetchBlogItems = async (limit: number = 4): Promise<BlogItem[]> => {
 		url: `https://blog.nabilridhwan.com/${post.slug}`,
 	}));
 
-	return posts.slice(0, limit);
+	console.log(clonedData);
+
+	return posts;
 };
 
 export default fetchBlogItems;

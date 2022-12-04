@@ -1,5 +1,5 @@
 .project_card {
-	@apply bg-black my-10 p-5 border border-white/70 rounded-xl;
+	@apply bg-black my-10 p-5 border border-white/20 rounded-xl;
 }
 
 .project_card * {

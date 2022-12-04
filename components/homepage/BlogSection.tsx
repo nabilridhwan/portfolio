@@ -10,7 +10,7 @@ export default function BlogSection() {
 
 	const { data, isLoading, status } = useQuery(
 		["getBlogItems"],
-		async () => await fetchBlogItems(),
+		async () => await fetchBlogItems(10),
 		{
 			refetchOnMount: true,
 			refetchOnWindowFocus: true,

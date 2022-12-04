@@ -28,25 +28,31 @@ const Home: NextPage = () => {
 
 	return (
 		<Container>
-			<div className="my-36">
+			<div className="mt-32">
 				<FadeInSection>
 					<Header />
 				</FadeInSection>
 			</div>
 
 			<FadeInSection>
-				<div className="my-5">
-					<h2 className="section-title">Blog</h2>
+				<div className="my-1">
+					<h2 className="section-title text-2xl">
+						Latest Blog Posts
+					</h2>
 
-					<p className="muted">
-						Read my blog:{" "}
+					{/* <p className="muted">
+						Hi, I&apos;m Nabil and this is my blog,{" "}
 						<a
 							href="https://blog.nabilridhwan.com"
 							className="underline text-white"
 						>
-							Nabil&apos;s Developer Adventures
+							Nabil&apos;s Developer Adventures!
 						</a>
-					</p>
+						. I share the challenges and valuable lessons I learn
+						while creating my hobbies and solving code. Follow along
+						for an exciting journey into the world of web
+						development.{" "}
+					</p> */}
 				</div>
 				<BlogSection />
 			</FadeInSection>
