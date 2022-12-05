@@ -10,6 +10,7 @@ import Project from "../components/Project";
 
 import musicn from "../public/musicn.png";
 import similarify from "../public/similarify.png";
+import similarifyLogo from "../public/similarify_logo.png";
 import troof from "../public/troof_promo.png";
 
 const Home: NextPage = () => {
@@ -115,6 +116,7 @@ const Home: NextPage = () => {
 
 				<Project
 					img_src={similarify}
+					logo={similarifyLogo}
 					tags={["React"]}
 					title="Similarify"
 					links={{
