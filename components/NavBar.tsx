@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ReactNode, useEffect, useState } from "react";
-import styles from "../styles/Navbar.module.css";
+import { useRouter } from "next/router";
+import { ReactNode } from "react";
 
 interface NavbarLink {
 	displayItem: ReactNode;
@@ -14,29 +14,19 @@ const navbarItems: NavbarLink[] = [
 		link: "/",
 	},
 	{
-		displayItem: "My Works",
+		displayItem: "Projects",
 		link: "/work",
 	},
-
-	// {
-	// 	displayItem: (
-	// 		<>
-	// 			Blog
-	// 			<FaExternalLinkAlt size={13} className="inline-block ml-2" />
-	// 		</>
-	// 	),
-	// 	link: "https://blog.nabilridhwan.com",
-	// },
 
 	// {
 	// 	displayItem: "Resume",
 	// 	link: "/resume",
 	// },
 
-	{
-		displayItem: "About",
-		link: "/about",
-	},
+	// {
+	// 	displayItem: "About",
+	// 	link: "/about",
+	// },
 ];
 
 function isActive(location: Location, navbarLink: NavbarLink) {
@@ -46,44 +36,32 @@ function isActive(location: Location, navbarLink: NavbarLink) {
 }
 
 const NavBar = () => {
-	const [loc, setLoc] = useState<Location | null>(null);
+	const router = useRouter();
 
-	useEffect(() => {
-		setLoc(window.location);
-	}, []);
+	console.log(router.route);
 
 	return (
-		<nav className={styles.navbar}>
-			<ul>
+		<nav className="bg-primarylight  w-fit p-5 py-0  rounded-full border border-muted/20 text-sm overflow-hidden">
+			<ul className="flex gap-8">
 				{navbarItems.map((item, index) => (
 					<li
 						key={index}
-						className="flex flex-col justify-center items-center relative"
+						className=" text-muted py-3 hover:text-white transition-all relative"
 					>
 						<Link href={item.link}>
-							<a>{item.displayItem}</a>
+							<a className="py-3">{item.displayItem}</a>
 						</Link>
 
 						<motion.div
-							initial={{ opacity: 0 }}
+							key={router.route}
+							initial={{ height: 0, opacity: 0 }}
 							animate={{
-								opacity: 1,
-								width:
-									loc && isActive(loc, item) ? "20px" : "0",
+								opacity:
+									router.route === item.link ? "100" : "0px",
 								height:
-									loc && isActive(loc, item) ? "3px" : "0px",
+									router.route === item.link ? "3px" : "0px",
 							}}
-							exit={{
-								opacity: 0,
-								width: "0%",
-								height: "0px",
-							}}
-							style={{
-								backgroundColor: "white",
-								position: "absolute",
-								bottom: "-10px",
-								borderRadius: "5px",
-							}}
+							className="w-full bg-accent absolute bottom-0 blur-sm"
 						/>
 					</li>
 				))}

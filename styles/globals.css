@@ -1,94 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=Poppins:wght@600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-	background-color: black;
-	color: white;
-	background-size: 180px 180px;
-	background-image: linear-gradient(
-			to right,
-			rgba(255, 255, 255, 0.1) 1px,
-			transparent 1px
-		),
-		linear-gradient(
-			to bottom,
-			rgba(255, 255, 255, 0.1) 1px,
-			transparent 1px
-		);
-	padding: 0;
-	margin: 0;
-	font-family: "Inter", sans-serif;
+* {
+	@apply font-body text-textcolor z-20;
 }
 
-.outline_text {
-	-webkit-text-stroke: 0.8px white;
-	color: black;
+html {
+	@apply bg-primarydark;
 }
 
-.outline_text_muted {
-	-webkit-text-stroke: 0.8px rgba(255, 255, 255, 0.5);
-	color: black;
-}
-
-.outline_text_transparent {
-	-webkit-text-stroke: 0.8px white;
-	color: transparent;
-}
-
-header h1 {
-	@apply text-7xl;
-	font-family: "Inter", sans-serif;
-	line-height: 90%;
-	font-weight: 900;
-	margin-bottom: 0;
-}
-
-.scrollbar-none {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
-}
-
-.muted {
-	color: #aaa;
-}
-
-h2 {
-	font-size: 2.5rem;
-	font-weight: 800;
-	margin-bottom: 0;
-}
-
-.container {
-	width: 80%;
-	margin: auto;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-header;
 }
 
 p {
-	line-height: 200%;
+	@apply leading-relaxed;
 }
 
-/* {
-	box-sizing: border-box;
-} */
-
-.about-me > p {
-	width: 65%;
-	margin: 2rem auto;
+.muted {
+	@apply text-[#8C8C8C];
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */

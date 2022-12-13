@@ -1,7 +1,0 @@
-.footer {
-	@apply my-20 text-center;
-}
-
-.icon {
-	@apply border border-white p-3 mx-2 rounded-full transition hover:scale-110;
-}

@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { DateTime } from 'luxon';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { DateTime } from "luxon";
+import Link from "next/link";
 import {
 	IoCodeSlashOutline,
 	IoLogoGithub,
 	IoStarOutline,
 	IoTimeOutline,
-} from 'react-icons/io5';
-import styles from '../styles/ProjectCard.module.css';
+} from "react-icons/io5";
+// import styles from '../styles/ProjectCard.module.css';
 
 type ProjectCardProps = {
 	key: string | number;
@@ -37,16 +37,15 @@ export default function ProjectCard(props: ProjectCardProps) {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 			style={{
-				backgroundColor: 'black',
-				boxShadow: 'none',
+				backgroundColor: "black",
+				boxShadow: "none",
 			}}
 			whileHover={{
 				scale: 1.2,
-				backgroundColor: 'black',
-				transition: { ease: 'easeOut' },
-				boxShadow: '0px 10px 50px rgba(0, 0, 0, 1)',
+				backgroundColor: "black",
+				transition: { ease: "easeOut" },
+				boxShadow: "0px 10px 50px rgba(0, 0, 0, 1)",
 			}}
-			className={styles.project_card}
 		>
 			{/* <div className={styles.tag_section + ' mb-4'}>
 				{props.tags.map((tag, index) => (
@@ -57,15 +56,15 @@ export default function ProjectCard(props: ProjectCardProps) {
 			<h4>{props.title}</h4>
 
 			<p className="muted text-sm my-3">
-				{props.description || 'No description provided'}
+				{props.description || "No description provided"}
 			</p>
 
-			<div className={styles.stats}>
+			<div>
 				<p>
 					<IoStarOutline className="inline" /> {props.stars}
 				</p>
 				<p>
-					<IoTimeOutline className="inline" />{' '}
+					<IoTimeOutline className="inline" />{" "}
 					{convertToDateString(
 						DateTime.fromJSDate(
 							props.createdAt
@@ -75,22 +74,21 @@ export default function ProjectCard(props: ProjectCardProps) {
 
 				{props.language && (
 					<p>
-						<IoCodeSlashOutline className="inline" />{' '}
+						<IoCodeSlashOutline className="inline" />{" "}
 						{props.language}
 					</p>
 				)}
 			</div>
 
-			<div className={styles.link_wrapper}>
+			<div>
 				<Link href={props.links.github!}>
 					<motion.a
 						href={props.links.github!}
-						style={{ cursor: 'pointer' }}
+						style={{ cursor: "pointer" }}
 						whileHover={{ scale: 1.05 }}
 						whileTap={{
 							scale: 0.95,
 						}}
-						className={styles.button}
 					>
 						<IoLogoGithub className="inline mr-1" />
 						Github
@@ -98,18 +96,14 @@ export default function ProjectCard(props: ProjectCardProps) {
 				</Link>
 
 				{props.links.page && (
-					<Link
-						className={styles.button_secondary}
-						href={props.links.page!}
-					>
+					<Link href={props.links.page!}>
 						<motion.a
-							style={{ cursor: 'pointer' }}
+							style={{ cursor: "pointer" }}
 							href={props.links.page!}
 							whileHover={{ scale: 1.05 }}
 							whileTap={{
 								scale: 0.95,
 							}}
-							className={styles.button_secondary}
 						>
 							View Page →
 						</motion.a>

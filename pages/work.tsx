@@ -1,128 +1,98 @@
-import { AnimatePresence } from 'framer-motion';
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
-import Container from '../components/Container';
-import FadeInSection from '../components/FadeInSection';
-import ProjectCard from '../components/ProjectCard';
-import getAllGithubRepos from '../services/getAllGithubRepos.service';
-
-import { useQuery } from '@tanstack/react-query';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { IoLinkSharp } from "react-icons/io5";
+import Container from "../components/Container";
 
 const Project: NextPage = () => {
-	const [repoData, setRepoData] = useState<any>([]);
-	const [filteredRepoData, setFilteredRepoData] = useState<any>([]);
-	const [searchInput, setSearchInput] = useState('');
-
-	const {
-		data: repoFetchData,
-		status: repoDataStatus,
-		isLoading: repoLoading,
-	} = useQuery(
-		['getAllGithubRepos'],
-		async () => await getAllGithubRepos('nabilridhwan'),
-		{
-			refetchOnMount: true,
-			cacheTime: 1000 * 60 * 5, // 5 minutes
-			staleTime: 1000 * 60 * 5, // 5 minutes
-		}
-	);
-
-	useEffect(() => {
-		if (repoDataStatus === 'success') {
-			setRepoData(repoFetchData);
-			setFilteredRepoData(repoFetchData);
-		}
-	}, [repoDataStatus, repoFetchData]);
-
-	useEffect(() => {
-		if (searchInput.length === 0) {
-			setFilteredRepoData(repoData);
-		}
-
-		// Filter off set of repos based on search input
-		const filteredRepoData = repoData.filter((repo: any) => {
-			console.log(repo);
-			return (
-				repo.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-				repo.description
-					?.toLowerCase()
-					.includes(searchInput.toLowerCase())
-			);
-		});
-
-		setFilteredRepoData(filteredRepoData);
-	}, [searchInput, repoData]);
-
 	return (
 		<Container>
-			<FadeInSection>
-				<header className="my-20">
-					<h1>
-						<span className="outline_text">My</span>
-						<br />
-						Works
-					</h1>
+			<header className="mt-36">
+				<h1 className="text-4xl lg:text-5xl font-semibold font-header">
+					Projects and applications I&apos;ve made trying to get my
+					feet wet
+				</h1>
 
-					<div className="my-10">
-						<p className="muted">
-							My complete set of works from my Github profile
-						</p>
-					</div>
-				</header>
+				<div className="my-10">
+					<p className="muted leading-relaxed">
+						While I am proud of all of the programming projects that
+						I have done over the years, the following are some of
+						the ones that stand out to me as particularly
+						challenging and rewarding. These projects have helped me
+						grow as a programmer and allowed me to push the
+						boundaries of my abilities.
+					</p>
+				</div>
+			</header>
 
-				<input
-					className="my-20 p-3 rounded-lg bg-transparent border border-white/50 focus:border-white outline-none placeholder:text-white/50 w-full"
-					value={searchInput}
-					placeholder="Search"
-					onChange={(e) => setSearchInput(e.target.value)}
-				/>
+			<div className="lg:grid grid-cols-2 gap-10 mb-10 space-y-10 lg:space-y-0">
+				{/* Item */}
+				<div className="space-y-2">
+					<Image
+						src={require("../public/projects/similarify.png")}
+						alt="similarify"
+						className="rounded-3xl"
+					/>
 
-				{repoLoading && (
-					<div className="my-10 w-full flex items-center justify-center">
-						<LoadingSpinner />
-					</div>
-				)}
+					<h3 className="text-2xl">Similarify</h3>
+					<p className="muted">
+						Expand your musical horizons with the Similarify - find
+						new tunes based on the songs you already love! (Powered
+						by Spotify)
+					</p>
 
-				{repoLoading || (
-					<>
-						{filteredRepoData.length === 0 && (
-							<div className="my-10 w-full flex items-center justify-center">
-								<p className="muted">
-									No repos found matching your search
-								</p>
-							</div>
-						)}
-					</>
-				)}
+					<Link href="https://similarify.netlify.app">
+						<span className="flex items-center gap-2 cursor-pointer">
+							<IoLinkSharp className="-rotate-45" />
+							similarifyapp.netlify.app
+						</span>
+					</Link>
+				</div>
 
-				{repoLoading || (
-					<div className="md:grid md:grid-cols-3 gap-5">
-						<AnimatePresence mode="popLayout">
-							{filteredRepoData.map((repo: any) => (
-								<ProjectCard
-									key={repo.id}
-									title={repo.name}
-									description={repo.description}
-									language={repo.language}
-									stars={repo.stargazers_count}
-									tags={repo.topics}
-									fork={repo.fork}
-									createdAt={new Date(repo.created_at)}
-									links={{
-										github: repo.html_url,
-										page: repo.homepage
-											? repo.homepage
-											: repo.has_pages
-											? repo.html_url
-											: '',
-									}}
-								/>
-							))}
-						</AnimatePresence>
-					</div>
-				)}
-			</FadeInSection>
+				<div className="space-y-2">
+					<Image
+						src={require("../public/projects/troof.png")}
+						alt="Troof"
+						className="rounded-3xl"
+					/>
+
+					<h3 className="text-2xl">Troof</h3>
+					<p className="muted">
+						Experience the ultimate social truth or dare game with
+						Troof! - see, chat, and react together with your
+						friends!
+					</p>
+
+					<Link href="https://troof.nabilridhwan.com">
+						<span className="flex items-center gap-2 cursor-pointer">
+							<IoLinkSharp className="-rotate-45" />
+							troof.nabilridhwan.com
+						</span>
+					</Link>
+				</div>
+
+				<div className="space-y-2">
+					<Image
+						src={require("../public/projects/musicn.png")}
+						alt="Musicn"
+						className="rounded-3xl"
+					/>
+
+					<h3 className="text-2xl">Musicn</h3>
+					<p className="muted">
+						Get a glimpse into the musical tastes of your friends
+						and discover new tracks with the Next.js-powered Spotify
+						Social app!
+					</p>
+
+					<Link href="https://musicnapp.com">
+						<span className="flex items-center gap-2 cursor-pointer">
+							<IoLinkSharp className="-rotate-45" />
+							musicnapp.com
+						</span>
+					</Link>
+				</div>
+			</div>
 		</Container>
 	);
 };
