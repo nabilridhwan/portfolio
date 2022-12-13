@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -29,12 +30,6 @@ const navbarItems: NavbarLink[] = [
 	// },
 ];
 
-function isActive(location: Location, navbarLink: NavbarLink) {
-	// console.log(location.pathname, navbarLink.link);
-	// console.log(location.pathname == navbarLink.link);
-	return location.pathname == navbarLink.link;
-}
-
 const NavBar = () => {
 	const router = useRouter();
 
@@ -49,7 +44,14 @@ const NavBar = () => {
 						className=" text-muted py-3 hover:text-white transition-all relative"
 					>
 						<Link href={item.link}>
-							<a className="py-3">{item.displayItem}</a>
+							<a
+								className={`py-3 transition-all ${classNames({
+									"font-bold text-white/80":
+										router.route === item.link,
+								})}`}
+							>
+								{item.displayItem}
+							</a>
 						</Link>
 
 						<motion.div
@@ -57,11 +59,10 @@ const NavBar = () => {
 							initial={{ height: 0, opacity: 0 }}
 							animate={{
 								opacity:
-									router.route === item.link ? "100" : "0px",
-								height:
-									router.route === item.link ? "3px" : "0px",
+									router.route === item.link ? "100" : "0",
+								y: router.route === item.link ? "0" : "-10",
 							}}
-							className="w-full bg-accent absolute bottom-0 blur-sm"
+							className="w-full bg-accent absolute bottom-0 blur-sm h-px"
 						/>
 					</li>
 				))}

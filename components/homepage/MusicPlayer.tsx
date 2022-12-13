@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { NextComponentType } from 'next';
-import { ReactNode, useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { NextComponentType } from "next";
+import { ReactNode, useEffect, useState } from "react";
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import { useQuery } from '@tanstack/react-query';
-import { DateTime } from 'luxon';
-import Link from 'next/link';
-import { Audio } from 'react-loader-spinner';
-import getCurrentlyListeningSong from '../../services/getCurrentlyListeningSong.service';
-import getRecentlyPlayedSongs from '../../services/getRecentlyPlayedSongs.service';
+import { useQuery } from "@tanstack/react-query";
+import { DateTime } from "luxon";
+import Link from "next/link";
+import { IoHeadsetOutline } from "react-icons/io5";
+import getCurrentlyListeningSong from "../../services/getCurrentlyListeningSong.service";
+import getRecentlyPlayedSongs from "../../services/getRecentlyPlayedSongs.service";
 
 // Component to wrap and fetch data
 const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
@@ -19,7 +19,7 @@ const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
 	const [artistString, setArtistString] = useState();
 
 	const { data, isLoading, status } = useQuery(
-		['getCurrentlyListeningSong'],
+		["getCurrentlyListeningSong"],
 		async () => await getCurrentlyListeningSong(),
 		{
 			refetchOnMount: true,
@@ -30,22 +30,22 @@ const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
 	);
 
 	useEffect(() => {
-		if (status === 'loading') {
+		if (status === "loading") {
 			setIsCurrentlyListening(false);
 		}
 
-		if (status === 'success') {
+		if (status === "success") {
 			if (Object.keys(data).length === 0) {
 				setIsCurrentlyListening(false);
 				return;
 			}
 
-			const image_url = data.item?.album.images[2].url;
+			const image_url = data.item?.album.images[1].url;
 			const spotify_link = data.item?.external_urls.spotify;
 			const song_name = data.item?.name;
 			const artist_string = data.item?.artists
 				.map((a: any) => a.name)
-				.join(', ');
+				.join(", ");
 
 			setImageUrl(image_url);
 			setSpotifyLink(spotify_link);
@@ -57,7 +57,7 @@ const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
 			setIsCurrentlyListening(true);
 		}
 
-		if (status === 'error') {
+		if (status === "error") {
 			setIsCurrentlyListening(false);
 			setError(true);
 		}
@@ -68,18 +68,27 @@ const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
 			{isLoading && <div className="my-20 h-1" />}
 
 			<AnimatedComponent>
-				{isCurrentlyListening && !error && (
-					<CurrentlyPlayingMusicPlayerComponent
-						imageUrl={imageUrl!}
-						spotifyLink={spotifyLink!}
-						songName={songName!}
-						artistString={artistString!}
-					/>
-				)}
+				<div className="rounded-3xl border border-muted/30 p-8 w-full">
+					<div className="flex items-center gap-2 mb-4 ">
+						<IoHeadsetOutline className="text-muted" />
+						<p className="text-muted">
+							I&apos;m currently listening to
+						</p>
+					</div>
 
-				{!isCurrentlyListening && (
-					<RecentlyPlayedMusicPlayerComponent />
-				)}
+					{isCurrentlyListening && !error && (
+						<CurrentlyPlayingMusicPlayerComponent
+							imageUrl={imageUrl!}
+							spotifyLink={spotifyLink!}
+							songName={songName!}
+							artistString={artistString!}
+						/>
+					)}
+
+					{(!isCurrentlyListening || error) && (
+						<RecentlyPlayedMusicPlayerComponent />
+					)}
+				</div>
 			</AnimatedComponent>
 		</>
 	);
@@ -100,8 +109,8 @@ function AnimatedComponent({ children }: { children: ReactNode }) {
 				y: 0,
 				opacity: 1,
 				transition: {
-					type: 'tween',
-					ease: 'easeOut',
+					type: "tween",
+					ease: "easeOut",
 					duration: 0.5,
 					delay: 0.2,
 				},
@@ -125,29 +134,29 @@ function CurrentlyPlayingMusicPlayerComponent({
 }: MusicPlayerComponentProps) {
 	return (
 		<>
-			<Audio
-				height="20"
-				width="20"
-				color="white"
-				ariaLabel="audio-waveform"
-				// wrapperStyle={{}}
-				// wrapperClass="wrapper-class"
-				visible={true}
-			/>
+			<Link href={spotifyLink}>
+				<>
+					<div className="flex items-center gap-5 cursor-pointer">
+						<picture>
+							<img
+								src={imageUrl}
+								alt={songName}
+								className="aspect-square w-16 rounded-md"
+							/>
+						</picture>
 
-			<div>
-				<p className="text-sm text-center my-3">
-					I&apos;m currently listening to{' '}
-					<Link href={spotifyLink}>
-						<a>
-							<span className="text-white underline cursor-pointer">
-								{songName} by {artistString}
-							</span>
-						</a>
-					</Link>
-					{/* <p className="text-xs my-2">Click to preview song!</p> */}
-				</p>
-			</div>
+						<div>
+							<p className="text-white font-bold line-clamp-1">
+								{songName}
+							</p>
+							<p className="muted line-clamp-1">{artistString}</p>
+						</div>
+					</div>
+
+					<p className="text-sm text-right text-muted">Now</p>
+				</>
+			</Link>
+			{/* <p className="text-xs my-2">Click to preview song!</p> */}
 		</>
 	);
 }
@@ -155,14 +164,14 @@ function CurrentlyPlayingMusicPlayerComponent({
 function RecentlyPlayedMusicPlayerComponent() {
 	const [error, setError] = useState(true);
 	const [isRecentlyPlayed, setIsRecentlyPlayed] = useState(false);
-	const [imageUrl, setImageUrl] = useState('');
-	const [spotifyLink, setSpotifyLink] = useState('');
-	const [songName, setSongName] = useState('');
-	const [artistString, setArtistString] = useState('');
-	const [playedAt, setPlayedAt] = useState('');
+	const [imageUrl, setImageUrl] = useState("");
+	const [spotifyLink, setSpotifyLink] = useState("");
+	const [songName, setSongName] = useState("");
+	const [artistString, setArtistString] = useState("");
+	const [playedAt, setPlayedAt] = useState("");
 
 	const { data, isLoading, status } = useQuery(
-		['getRecentlyPlayedSongs'],
+		["getRecentlyPlayedSongs"],
 		async () => await getRecentlyPlayedSongs(),
 		{
 			refetchOnMount: true,
@@ -172,11 +181,11 @@ function RecentlyPlayedMusicPlayerComponent() {
 	);
 
 	useEffect(() => {
-		if (status === 'loading') {
+		if (status === "loading") {
 			setIsRecentlyPlayed(false);
 		}
 
-		if (status === 'success') {
+		if (status === "success") {
 			if (Object.keys(data).length === 0) {
 				setIsRecentlyPlayed(false);
 				return;
@@ -200,7 +209,7 @@ function RecentlyPlayedMusicPlayerComponent() {
 			setIsRecentlyPlayed(true);
 		}
 
-		if (status === 'error') {
+		if (status === "error") {
 			setIsRecentlyPlayed(false);
 			setError(true);
 		}
@@ -210,26 +219,32 @@ function RecentlyPlayedMusicPlayerComponent() {
 		<>
 			{isRecentlyPlayed && (
 				<>
-					<div>
-						<p className="text-sm text-center my-3">
-							I was listening to{' '}
-							<Link href={spotifyLink}>
-								<a>
-									<span className="text-white underline cursor-pointer">
-										{songName} by {artistString}
-									</span>
-									{/* <img
-								src={imageUrl}
-								alt={songName}
-								className="mt-1 md:mt-0 ml-2 border-[0.8px] border-white w-6 h-6 inline"
-							/> */}
-								</a>
-							</Link>{' '}
-							{DateTime.fromISO(playedAt).toRelative()}
-						</p>
+					<Link href={spotifyLink}>
+						<>
+							<div className="flex items-center gap-5 cursor-pointer">
+								<picture>
+									<img
+										src={imageUrl}
+										alt={songName}
+										className="aspect-square w-18 rounded-md"
+									/>
+								</picture>
 
-						{/* <p className="text-xs my-2">Click to preview song!</p> */}
-					</div>
+								<div>
+									<p className="text-white font-bold line-clamp-1">
+										{songName}
+									</p>
+									<p className="muted line-clamp-1">
+										{artistString}
+									</p>
+								</div>
+							</div>
+
+							<p className="text-sm text-muted text-right">
+								{DateTime.fromISO(playedAt).toRelative()}
+							</p>
+						</>
+					</Link>
 				</>
 			)}
 		</>

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import "../styles/globals.css";
 
@@ -22,19 +23,19 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<NavBar />
 			</div>
 
-			<AnimatePresence>
+			<AnimatePresence mode="wait">
 				<motion.div
 					key={router.route}
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					transition={{ duration: 0.5, ease: "easeIn" }}
+					transition={{ duration: 0.3, ease: "easeInOut" }}
 				>
 					<Component {...pageProps} />
 				</motion.div>
 			</AnimatePresence>
 
-			{/* <Footer /> */}
+			<Footer />
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
 	);

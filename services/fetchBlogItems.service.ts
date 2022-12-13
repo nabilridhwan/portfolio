@@ -5,6 +5,7 @@ import client from "../utils/apolloClient";
 export interface BlogItem {
 	dateAdded: string;
 	slug: string;
+	brief: string;
 	url: string;
 	title: string;
 	coverImage: string;
@@ -21,6 +22,7 @@ const fetchBlogItems = async (limit: number = 10): Promise<BlogItem[]> => {
 						title
 						posts {
 							title
+							brief
 							slug
 							dateAdded
 							coverImage
