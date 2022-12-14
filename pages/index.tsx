@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoBriefcaseOutline, IoLogoGithub } from "react-icons/io5";
 import BlogItemComponent from "../components/BlogItem";
 import Container from "../components/Container";
@@ -12,6 +12,12 @@ import MusicPlayerSection from "../components/homepage/MusicPlayer";
 import fetchBlogItems from "../services/fetchBlogItems.service";
 
 const Home: NextPage = () => {
+	const topDiv = useRef<HTMLDivElement>(null);
+
+	const { scrollYProgress } = useScroll({
+		target: topDiv,
+	});
+
 	const [error, setError] = useState(false);
 
 	const { data, isLoading, status } = useQuery(
@@ -31,20 +37,25 @@ const Home: NextPage = () => {
 	}, [status]);
 
 	return (
-		<>
+		<div ref={topDiv}>
 			<Container>
 				<motion.div
 					id="hero-section"
 					className="flex flex-col gap-10 mt-28 space-y-3"
 				>
-					<div className="w-[60px]">
+					<motion.div
+						animate={{
+							scale: [0.5, 1.2, 1],
+						}}
+						className="w-[60px]"
+					>
 						<Image
 							src={require("../public/profile.png")}
 							className="absolute"
 							objectFit="cover"
 							alt="Nabil"
 						/>
-					</div>
+					</motion.div>
 
 					<motion.h1
 						transition={{
@@ -88,15 +99,36 @@ const Home: NextPage = () => {
 						</motion.span>
 					</motion.h1>
 
-					<p className="w-3/3 md:w-5/6 text-lg leading-relaxed muted">
-						I&apos;m Nabil, a software developer based in Singapore.
-						I&apos;m a student from Singapore Polytechnic, and I
-						love creating software!
-					</p>
+					<motion.p className="w-3/3 md:w-5/6 text-lg leading-relaxed muted">
+						{"I'm Nabil, a software developer based in Singapore. I'm a student from Singapore Polytechnic, and I love creating software!"
+							.split(" ")
+							.map((word, index) => {
+								return (
+									<motion.span
+										key={index}
+										initial={{
+											y: 10,
+											opacity: 0,
+										}}
+										animate={{
+											y: 0,
+											opacity: 1,
+										}}
+										className="text-muted inline-block mr-1"
+										transition={{
+											opacity: 0.6,
+											delay: 1 + index * 0.05,
+										}}
+									>
+										<>{word} </>
+									</motion.span>
+								);
+							})}
+					</motion.p>
 
 					<div className="flex gap-4 text-3xl text-muted">
 						<Link href="https://github.nabilridhwan.com">
-							<IoLogoGithub className="text-muted cursor-pointer" />
+							<IoLogoGithub className="cursor-pointer" />
 						</Link>
 
 						{/* <IoLogoInstagram className="text-muted" /> */}
@@ -105,13 +137,13 @@ const Home: NextPage = () => {
 
 				<motion.div
 					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ delay: 0.5 }}
-					className="h-[350px] z-30 mt-32 flex items-center"
+					whileInView={{ opacity: 1 }}
+					viewport={{ once: true }}
+					className="h-[350px] z-30 my-10 flex items-center"
 				>
 					{/* Images */}
-					<div className="gap-10 lg:gap-14 absolute left-0 flex justify-center w-full overflow-hidden md:overflow-visible">
-						<div className="relative w-60 left-0 rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">
+					<div className="snap-x gap-10 lg:gap-14 absolute left-0 flex justify-center w-full overflow-x-scroll md:overflow-visible">
+						<div className="snap-center relative w-60 left-0 rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">
 							<Image
 								src={require("../public/homepage-pics/1.png")}
 								className="absolute"
@@ -120,7 +152,7 @@ const Home: NextPage = () => {
 							/>
 						</div>
 
-						<div className="relative w-60 -rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">
+						<div className=" snap-center relative w-60 -rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">
 							<Image
 								src={require("../public/homepage-pics/2.png")}
 								className="absolute"
@@ -207,7 +239,7 @@ const Home: NextPage = () => {
 					</div>
 				</div>
 			</Container>
-		</>
+		</div>
 	);
 };
 

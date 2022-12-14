@@ -16,7 +16,7 @@ const navbarItems: NavbarLink[] = [
 	},
 	{
 		displayItem: "Projects",
-		link: "/work",
+		link: "/projects",
 	},
 
 	// {
@@ -24,10 +24,10 @@ const navbarItems: NavbarLink[] = [
 	// 	link: "/resume",
 	// },
 
-	// {
-	// 	displayItem: "About",
-	// 	link: "/about",
-	// },
+	{
+		displayItem: "About",
+		link: "/about",
+	},
 ];
 
 const NavBar = () => {

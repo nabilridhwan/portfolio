@@ -71,9 +71,8 @@ const MusicPlayerSection: NextComponentType<{}, {}, {}> = () => {
 				<div className="rounded-3xl border border-muted/30 p-8 w-full">
 					<div className="flex items-center gap-2 mb-4 ">
 						<IoHeadsetOutline className="text-muted" />
-						<p className="text-muted">
-							I&apos;m currently listening to
-						</p>
+
+						<p className="text-muted">I&apos;m listening to</p>
 					</div>
 
 					{isCurrentlyListening && !error && (
@@ -226,7 +225,7 @@ function RecentlyPlayedMusicPlayerComponent() {
 									<img
 										src={imageUrl}
 										alt={songName}
-										className="aspect-square w-18 rounded-md"
+										className="aspect-square w-16 rounded-md"
 									/>
 								</picture>
 
