@@ -28,7 +28,7 @@ const Project: NextPage = () => {
 									onClick={() =>
 										(window.location.href = "/resume.pdf")
 									}
-									className="flex items-center gap-2 bg-primarylight px-4 py-3 rounded-xl text-white/60 outline outline-white/10 shadow-lg"
+									className="flex items-center gap-2 bg-primarylight px-4 py-3 rounded-xl text-white/60 border border-white/10 shadow-lg"
 								>
 									<IoDownloadOutline />
 									View / Download my Resume

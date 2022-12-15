@@ -63,40 +63,28 @@ const Home: NextPage = () => {
 						}}
 						className="font-extrabold text-5xl lg:text-6xl w-4/4"
 					>
-						<motion.span
-							className="font-header"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-						>
-							Web Developer,{" "}
-						</motion.span>
-
-						<motion.span
-							className="font-header"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ delay: 0.2 }}
-						>
-							Problem Solver,{" "}
-						</motion.span>
-
-						<motion.span
-							className="font-header"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ delay: 0.4 }}
-						>
-							Programmer{" "}
-						</motion.span>
-
-						<motion.span
-							className="font-header"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ delay: 0.6 }}
-						>
-							and Designer.
-						</motion.span>
+						{"Web Developer, Problem Solver, Programmer and Designer."
+							.split(" ")
+							.map((word, index) => (
+								<motion.span
+									key={index}
+									initial={{
+										y: 20,
+										opacity: 0,
+									}}
+									animate={{
+										y: 0,
+										opacity: 1,
+									}}
+									transition={{
+										opacity: 0.6,
+										delay: index * 0.15,
+									}}
+									className="font-extrabold font-header inline-block mr-3"
+								>
+									{word}{" "}
+								</motion.span>
+							))}
 					</motion.h1>
 
 					<motion.p className="w-3/3 md:w-5/6 text-lg leading-relaxed muted">
