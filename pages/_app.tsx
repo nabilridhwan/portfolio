@@ -1,44 +1,47 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { AnimatePresence, motion } from "framer-motion";
-import type { AppProps } from "next/app";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import {AnimatePresence, motion} from "framer-motion";
+import type {AppProps} from "next/app";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import "../styles/globals.css";
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }: AppProps) {
-	const router = useRouter();
+function MyApp({Component, pageProps}: AppProps) {
+    const router = useRouter();
 
-	return (
-		<QueryClientProvider client={queryClient}>
-			<Head>
-				<title>Nabil Ridhwan</title>
-			</Head>
+    return (
+        <QueryClientProvider client={queryClient}>
+            <Head>
+                <title>Nabil Ridhwan | Software Engineer in sunny-side Singapore!</title>
 
-			<div className="flex items-center justify-center w-full mt-10">
-				<NavBar />
-			</div>
+                <meta name="description"
+                      content="A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science."/>
+            </Head>
 
-			<AnimatePresence mode="wait">
-				<motion.div
-					key={router.route}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-					transition={{ duration: 0.3, ease: "easeInOut" }}
-				>
-					<Component {...pageProps} />
-				</motion.div>
-			</AnimatePresence>
+            <div className="flex items-center justify-center w-full mt-10">
+                <NavBar/>
+            </div>
 
-			<Footer />
-			<ReactQueryDevtools initialIsOpen={false} />
-		</QueryClientProvider>
-	);
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={router.route}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.3, ease: "easeInOut"}}
+                >
+                    <Component {...pageProps} />
+                </motion.div>
+            </AnimatePresence>
+
+            <Footer/>
+            <ReactQueryDevtools initialIsOpen={false}/>
+        </QueryClientProvider>
+    );
 }
 
 export default MyApp;
