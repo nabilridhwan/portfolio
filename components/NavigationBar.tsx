@@ -35,7 +35,7 @@ const navbarItems: NavbarLink[] = [
     // },
 ];
 
-const NavBar = () => {
+const NavigationBar = () => {
     const router = useRouter();
 
     console.log(router.route);
@@ -72,4 +72,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default NavigationBar;

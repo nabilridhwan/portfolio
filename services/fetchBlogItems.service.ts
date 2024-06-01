@@ -1,6 +1,6 @@
 import {gql} from "@apollo/client";
 
-import client from "../utils/apolloClient";
+import client from "../lib/ApolloClient";
 
 export interface BlogItem {
     dateAdded: string;

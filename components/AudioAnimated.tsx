@@ -1,5 +1,9 @@
 import {Audio} from 'react-loader-spinner';
 
+/**
+ * An animated audio 'loading spinner'
+ */
+
 const AudioAnimated = () => {
     return (
         <Audio

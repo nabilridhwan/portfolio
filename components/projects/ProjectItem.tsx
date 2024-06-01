@@ -1,15 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import {IoLinkSharp} from "react-icons/io5";
+import {Project} from "../../types/Project";
 
-
-export interface Project {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
-    technologies: string[];
-}
 
 const ProjectItem = ({image, title, description, technologies, link}: Project) => {
     return (

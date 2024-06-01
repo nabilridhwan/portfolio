@@ -5,7 +5,7 @@ import type {AppProps} from "next/app";
 import Head from "next/head";
 import {useRouter} from "next/router";
 import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
+import NavigationBar from "../components/NavigationBar";
 import "../styles/globals.css";
 
 const queryClient = new QueryClient();
@@ -39,7 +39,7 @@ function MyApp({Component, pageProps}: AppProps) {
             </Head>
 
             <div className="flex items-center justify-center w-full mt-10">
-                <NavBar/>
+                <NavigationBar/>
             </div>
 
             <AnimatePresence mode="wait">

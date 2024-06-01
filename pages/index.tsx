@@ -5,9 +5,9 @@ import {useEffect, useMemo} from "react";
 import {IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoNewspaper} from "react-icons/io5";
 import Container from "../components/Container";
 import MusicPlayerSection from "../components/homepage/MusicPlayer";
-import Swish from "../components/homepage/swish";
-import HugeFigures from "../components/homepage/HugeFigures";
-import TestimonialComponent from "../components/homepage/TestimonialComponent";
+import Swish from "../components/homepage/Swish";
+import Figure from "../components/homepage/Figure";
+import Testimonial from "../components/homepage/Testimonial";
 import useMeasure from "react-use-measure";
 
 const skills = [
@@ -148,7 +148,7 @@ const Home: NextPage = () => {
                         }}
                         viewport={{once: true}}
                     >
-                        <HugeFigures number={"3+"} caption={"Years of Professional Experience"}/>
+                        <Figure number={"3+"} caption={"Years of Professional Experience"}/>
                     </motion.div>
 
                     <motion.div
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
                             opacity: 1, y: 0
                         }}
                     >
-                        <HugeFigures number={"5+"} caption={"Clients helped, turning their ideas into a reality"}/>
+                        <Figure number={"5+"} caption={"Clients helped, turning their ideas into a reality"}/>
                     </motion.div>
 
                     <motion.div
@@ -172,7 +172,7 @@ const Home: NextPage = () => {
                             opacity: 1, y: 0
                         }}
                     >
-                        <HugeFigures number={"6+"} caption={"Years of Programming Experience"}/>
+                        <Figure number={"6+"} caption={"Years of Programming Experience"}/>
                     </motion.div>
 
                     <motion.div
@@ -184,7 +184,7 @@ const Home: NextPage = () => {
                             opacity: 1, y: 0
                         }}
                     >
-                        <HugeFigures number={"40+"} caption={"Funny jokes made – you gotta trust me on this one"}/>
+                        <Figure number={"40+"} caption={"Funny jokes made – you gotta trust me on this one"}/>
                     </motion.div>
                 </div>
 
@@ -198,132 +198,19 @@ const Home: NextPage = () => {
 
                 <div className={'grid md:grid-cols-2 my-20 gap-8'}>
 
-                    <TestimonialComponent name={'Mr Tan Hu-Shien'}
-                                          position={'Senior Lecturer, Singapore Polytechnic'}
-                                          testimonial={'To be frank, even though I as an IT professional mentor to him, I couldn\'t implement such a system myself'}
-                                          image={'/testimonials/tan-hu-shien.png'}
+                    <Testimonial name={'Mr Tan Hu-Shien'}
+                                 position={'Senior Lecturer, Singapore Polytechnic'}
+                                 testimonial={'To be frank, even though I as an IT professional mentor to him, I couldn\'t implement such a system myself'}
+                                 image={'/testimonials/tan-hu-shien.png'}
                     />
 
 
-                    <TestimonialComponent name={'Mr Dan Toh'} position={'CEO / Founder, RunningStream Ptd Ltd.'}
-                                          testimonial={'He was essentially the technical forerunner for the team, enthusiastically paving the way for the team when it comes to new technical\n' +
-                                              'challenges.'} image={'/testimonials/dan-toh.png'}/>
+                    <Testimonial name={'Mr Dan Toh'} position={'CEO / Founder, RunningStream Ptd Ltd.'}
+                                 testimonial={'He was essentially the technical forerunner for the team, enthusiastically paving the way for the team when it comes to new technical\n' +
+                                     'challenges.'} image={'/testimonials/dan-toh.png'}/>
 
                 </div>
-
-
             </div>
-
-            {/*<motion.div*/}
-            {/*    initial={{opacity: 0}}*/}
-            {/*    whileInView={{opacity: 1}}*/}
-            {/*    viewport={{once: true}}*/}
-            {/*    className="h-[350px] z-30 my-10 flex items-center"*/}
-            {/*>*/}
-            {/*    /!* Images *!/*/}
-            {/*    <div*/}
-            {/*        className="snap-x gap-10 lg:gap-14 absolute left-0 flex justify-center w-full overflow-x-scroll md:overflow-visible">*/}
-            {/*        <div*/}
-            {/*            className="snap-center relative w-60 left-0 rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">*/}
-            {/*            <Image*/}
-            {/*                src={require("../public/homepage-pics/1.png")}*/}
-            {/*                className="absolute"*/}
-            {/*                objectFit="cover"*/}
-            {/*                alt="Nabil"*/}
-            {/*            />*/}
-            {/*        </div>*/}
-
-            {/*        <div*/}
-            {/*            className=" snap-center relative w-60 -rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">*/}
-            {/*            <Image*/}
-            {/*                src={require("../public/homepage-pics/2.png")}*/}
-            {/*                className="absolute"*/}
-            {/*                objectFit="cover"*/}
-            {/*                alt="Nabil"*/}
-            {/*            />*/}
-            {/*        </div>*/}
-
-            {/*        <div*/}
-            {/*            className="relative w-60 rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">*/}
-            {/*            <Image*/}
-            {/*                src={require("../public/homepage-pics/3.png")}*/}
-            {/*                className="absolute"*/}
-            {/*                objectFit="cover"*/}
-            {/*                alt="Nabil"*/}
-            {/*            />*/}
-            {/*        </div>*/}
-
-            {/*        <div*/}
-            {/*            className="w-60 relative -rotate-3 shadow-2xl flex-none transition-all ease-out hover:scale-110">*/}
-            {/*            <Image*/}
-            {/*                src={require("../public/homepage-pics/4.png")}*/}
-            {/*                className="absolute"*/}
-            {/*                objectFit="cover"*/}
-            {/*                alt="Nabil"*/}
-            {/*            />*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</motion.div>*/}
-
-            {/*<div className="md:grid grid-cols-2 gap-20 my-14">*/}
-            {/*    <div className="space-y-10">*/}
-            {/*        {JSON.stringify(data)}*/}
-            {/*        {JSON.stringify(status)}*/}
-            {/*        {data &&*/}
-            {/*            data.map((item) => (*/}
-            {/*                <BlogItemComponent*/}
-            {/*                    key={item.slug}*/}
-            {/*                    brief={item.brief}*/}
-            {/*                    coverImage=""*/}
-            {/*                    dateAdded={item.dateAdded}*/}
-            {/*                    slug={item.slug}*/}
-            {/*                    title={item.title}*/}
-            {/*                    url={item.url}*/}
-            {/*                />*/}
-            {/*            ))}*/}
-            {/*    </div>*/}
-
-            {/*    <div className="space-y-5">*/}
-            {/*        <div className="rounded-3xl border border-muted/30 p-8">*/}
-            {/*            <div className="flex items-center gap-3 text-muted mb-3">*/}
-            {/*                <IoBriefcaseOutline className="text-muted"/>*/}
-            {/*                <p className="text-muted">*/}
-            {/*                    Experience / Work / Education*/}
-            {/*                </p>*/}
-            {/*            </div>*/}
-
-            {/*            <div className="space-y-5">*/}
-            {/*                /!* Experience Column *!/*/}
-
-            {/*                <Experience*/}
-            {/*                    image={require("../public/sp.jpg")}*/}
-            {/*                    institution="Singapore Polytechnic"*/}
-            {/*                    role="Diploma in Information Technology"*/}
-            {/*                    start="2021"*/}
-            {/*                    end="Present"*/}
-            {/*                />*/}
-
-            {/*                <Experience*/}
-            {/*                    image={require("../public/sp.jpg")}*/}
-            {/*                    institution="Singapore Polytechnic"*/}
-            {/*                    role="Polytechnic Foundation Programme"*/}
-            {/*                    start="2020"*/}
-            {/*                    end="2021"*/}
-            {/*                />*/}
-
-            {/*                <Experience*/}
-            {/*                    image={require("../public/profile.png")}*/}
-            {/*                    institution="Freelance Developer"*/}
-            {/*                    role="Personal"*/}
-            {/*                    start="2019"*/}
-            {/*                    end="2021"*/}
-            {/*                />*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-
-            {/*        <MusicPlayerSection/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </Container>
     );
 };

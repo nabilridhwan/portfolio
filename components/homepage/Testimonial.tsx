@@ -7,7 +7,7 @@ interface TestimonialComponentProps {
     image: string;
 }
 
-export default function TestimonialComponent(props: TestimonialComponentProps) {
+export default function Testimonial(props: TestimonialComponentProps) {
 
     return (
         <div>

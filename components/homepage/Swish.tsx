@@ -1,3 +1,7 @@
+/**
+ * The pink line that appears below Nabil Ridhwan in the hero section
+ */
+
 export default function Swish() {
     return (
         <svg viewBox="0 0 513 43" fill="none" xmlns="http://www.w3.org/2000/svg">

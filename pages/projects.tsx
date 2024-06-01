@@ -1,8 +1,8 @@
 import {motion} from "framer-motion";
 import {NextPage} from "next";
-import {AnimationVariants} from "../animations/Animation";
 import Container from "../components/Container";
-import ProjectItem, {Project} from "../components/projects/ProjectItem";
+import ProjectItem from "../components/projects/ProjectItem";
+import {Project} from "../types/Project";
 
 
 const projects: Project[] = [
