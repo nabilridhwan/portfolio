@@ -48,15 +48,11 @@ const NavBar = () => {
                         key={index}
                         className=" text-muted py-3 hover:text-white transition-all relative"
                     >
-                        <Link href={item.link}>
-                            <a
-                                className={`py-3 transition-all ${classNames({
-                                    "font-bold text-white/80":
-                                        router.route === item.link,
-                                })}`}
-                            >
-                                {item.displayItem}
-                            </a>
+                        <Link href={item.link} className={`py-3 transition-all ${classNames({
+                            "font-bold text-white/80":
+                                router.route === item.link,
+                        })}`}>
+                            {item.displayItem}
                         </Link>
 
                         <motion.div
