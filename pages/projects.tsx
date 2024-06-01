@@ -37,6 +37,15 @@ const projects: Project[] = [
         image: "thoughtful.png",
         link: "https://github.com/nabilridhwan/Thoughtful",
         technologies: ["Dart", "Flutter", "Bloc", "SQLite"]
+    },
+
+    {
+        title: "Hacker Hotel",
+        description:
+            "Created for Republic Polytechnic's Open House 2024 with a team, \"Hacker Hotel\" is a Roblox game teaching cybersecurity through attacking, defending, capture-the-flag, and quizzes.",
+        image: "hacker-hotel.png",
+        link: "https://www.roblox.com/games/15193691719/Main-Menu",
+        technologies: ["Roblox Studio", "Lua", "Game Development"]
     }
 ]
 
@@ -60,7 +69,7 @@ const ProjectPage: NextPage = () => {
             </header>
 
             <div
-                className="lg:grid grid-cols-2 gap-10 mb-10 space-y-10 lg:space-y-0"
+                className="lg:grid grid-cols-3 gap-10 mb-10 space-y-10 lg:space-y-0"
             >
                 {projects.map((project, index) => (
                     // eslint-disable-next-line react/jsx-no-undef

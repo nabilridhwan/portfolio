@@ -17,7 +17,7 @@ const ProjectItem = ({image, title, description, technologies, link}: Project) =
                 {technologies.map((tech, index) => (
                     <p
                         key={index + tech}
-                        className="text-sm bg-primarylight px-2 py-1 my-1 rounded-full"
+                        className="text-sm bg-primarylight px-2 py-1 my-0 rounded-full"
                     >
                         {tech}
                     </p>
@@ -30,7 +30,7 @@ const ProjectItem = ({image, title, description, technologies, link}: Project) =
             </p>
 
             <Link href={link}>
-							<span className="flex items-center gap-2 cursor-pointer">
+							<span className="flex my-2 items-center gap-2 cursor-pointer">
 								<IoLinkSharp className="-rotate-45"/>
                                 View Project
 							</span>
