@@ -20,6 +20,22 @@ function MyApp({Component, pageProps}: AppProps) {
 
                 <meta name="description"
                       content="A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science."/>
+
+                <meta property="og:title" content="Nabil Ridhwan | Software Engineer in sunny-side Singapore!"/>
+                <meta property="og:description"
+                      content="A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science."/>
+                <meta property="og:image" content="/og-image.png"/>
+                <meta property="og:url" content="https://nabilridhwan.com"/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:image:width" content="1200"/>
+                <meta property="og:image:height" content="630"/>
+                <meta property="og:image:alt" content="Nabil Ridhwan | Software Engineer in sunny-side Singapore!"/>
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:site" content="@yourtwitterhandle"/>
+                <meta name="twitter:title" content="Nabil Ridhwan | Software Engineer in sunny-side Singapore!"/>
+                <meta name="twitter:description"
+                      content="A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science."/>
+                <meta name="twitter:image" content="/og-image.png"/>
             </Head>
 
             <div className="flex items-center justify-center w-full mt-10">

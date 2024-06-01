@@ -5,7 +5,7 @@ import {useEffect, useMemo} from "react";
 import {IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoNewspaper} from "react-icons/io5";
 import Container from "../components/Container";
 import MusicPlayerSection from "../components/homepage/MusicPlayer";
-import Swish from "../public/swish";
+import Swish from "../components/homepage/swish";
 import HugeFigures from "../components/homepage/HugeFigures";
 import TestimonialComponent from "../components/homepage/TestimonialComponent";
 import useMeasure from "react-use-measure";
