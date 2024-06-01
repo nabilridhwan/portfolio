@@ -21,25 +21,6 @@ const MusicPlayerSection = () => {
     }
 
     return (
-        <>
-            <AnimatedComponent>
-                <div
-                    className="rounded-[20px] border-[4px] drop-shadow-[5px_5px_0px_rgba(0,0,0,1)] border-black px-4 py-2 bg-accent">
-                    {type === 'current' && !error && (
-                        <CurrentlyPlaying setError={setError} setType={setType}/>
-                    )}
-
-                    {(type === 'recent' || error) && (
-                        <RecentlyPlayed setError={setError} setType={setType}/>
-                    )}
-                </div>
-            </AnimatedComponent>
-        </>
-    );
-};
-
-function AnimatedComponent({children}: { children: ReactNode }) {
-    return (
         <motion.div
             initial={{opacity: 0, y: -30}}
             animate={{
@@ -56,12 +37,21 @@ function AnimatedComponent({children}: { children: ReactNode }) {
                 y: 30,
                 opacity: 0,
             }}
-            className="w-fit max-w-[350px] absolute -top-5 -right-5"
+            className="w-fit max-w-[310px] absolute -top-5 -right-5"
         >
-            {children}
+            <div
+                className="rounded-[20px] border-[4px] drop-shadow-[5px_5px_0px_rgba(0,0,0,1)] border-black px-4 py-2 bg-accent">
+                {type === 'current' && !error && (
+                    <CurrentlyPlaying setError={setError} setType={setType}/>
+                )}
+
+                {(type === 'recent' || error) && (
+                    <RecentlyPlayed setError={setError} setType={setType}/>
+                )}
+            </div>
         </motion.div>
     );
-}
+};
 
 interface MusicPlayerProps {
     setError: (error: boolean) => void;
@@ -130,7 +120,7 @@ function CurrentlyPlaying({setError, setType}: MusicPlayerProps) {
                         {songName}
                     </p>
 
-                    <span className={'text-xs text-white/60'}>{artistString}</span>
+                    <span className={'text-xs text-white/70'}>{artistString}</span>
                 </div>
             </div>
         </Link>
@@ -202,7 +192,7 @@ function RecentlyPlayed({setError, setType}: MusicPlayerProps) {
                         {songName}
                     </p>
 
-                    <span className={'text-xs text-white/60'}>{artistString}</span>
+                    <span className={'text-xs text-white/70'}>{artistString}</span>
                 </div>
             </div>
         </Link>
