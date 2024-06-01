@@ -1,14 +1,10 @@
 import {motion} from "framer-motion";
-import {NextComponentType} from "next";
-import {ReactNode, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import {useQuery} from "@tanstack/react-query";
-import {DateTime} from "luxon";
 import Link from "next/link";
-import {IoHeadsetOutline} from "react-icons/io5";
 import getCurrentlyListeningSong from "../../services/getCurrentlyListeningSong.service";
 import getRecentlyPlayedSongs from "../../services/getRecentlyPlayedSongs.service";
-import Image from "next/image";
 import AudioAnimated from "../AudioAnimated";
 
 // Component to wrap and fetch data

@@ -56,8 +56,10 @@ async function getRecentlyPlayedSongs(accessToken: string) {
     return response.data.items;
 }
 
-export default {
+const Spotify = {
     getAccessToken,
     getCurrentlyListening,
     getRecentlyPlayedSongs,
 }
+
+export default Spotify;

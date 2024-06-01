@@ -1,22 +1,10 @@
-import {useQuery} from "@tanstack/react-query";
-import {animate, motion, useMotionValue, useScroll} from "framer-motion";
+import {animate, motion, useMotionValue} from "framer-motion";
 import type {NextPage} from "next";
-import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useMemo, useRef, useState} from "react";
-import {
-    IoArrowForward,
-    IoBriefcaseOutline,
-    IoLogoGithub,
-    IoLogoLinkedin,
-    IoNewspaper,
-    IoNewspaperOutline
-} from "react-icons/io5";
-import BlogItemComponent from "../components/BlogItem";
+import {useEffect, useMemo} from "react";
+import {IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoNewspaper} from "react-icons/io5";
 import Container from "../components/Container";
-import Experience from "../components/homepage/Experience";
 import MusicPlayerSection from "../components/homepage/MusicPlayer";
-import fetchBlogItems from "../services/fetchBlogItems.service";
 import Swish from "../public/swish";
 import HugeFigures from "../components/homepage/HugeFigures";
 import TestimonialComponent from "../components/homepage/TestimonialComponent";
