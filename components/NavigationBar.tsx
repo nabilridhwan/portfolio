@@ -37,11 +37,9 @@ const navbarItems: NavbarLink[] = [
 
 const NavigationBar = () => {
     const router = useRouter();
-
-    console.log(router.route);
-
     return (
-        <nav className="bg-primarylight  w-fit p-5 py-0  rounded-full border border-muted/20 text-sm overflow-hidden">
+        <nav
+            className="bg-primarylight w-fit p-5 py-0 my-[20px] drop-shadow-[0px_0px_30px_rgba(0,0,0,1)] rounded-full border border-muted/20 text-sm overflow-hidden fixed bottom-0 z-[999]">
             <ul className="flex gap-8">
                 {navbarItems.map((item, index) => (
                     <li

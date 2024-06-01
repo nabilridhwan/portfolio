@@ -17,7 +17,7 @@ const ProjectItem = ({image, title, description, technologies, link}: Project) =
                 {technologies.map((tech, index) => (
                     <p
                         key={index + tech}
-                        className="text-sm bg-primarylight px-2 py-1 rounded-full"
+                        className="text-sm bg-primarylight px-2 py-1 my-1 rounded-full"
                     >
                         {tech}
                     </p>

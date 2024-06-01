@@ -188,13 +188,13 @@ const Home: NextPage = () => {
                     </motion.div>
                 </div>
 
-                <div className={'text-center flex-col flex gap-10'}>
-                    <p>
-                        Want a site for your products? Done! How about a business idea of an innovative social media
-                        app? Done! Anything you say, I make it. Don’t take my word for it, let my testimonials
-                        speak for themselves.
-                    </p>
-                </div>
+                {/*<div className={'text-center flex-col flex gap-10'}>*/}
+                {/*    <p>*/}
+                {/*        Want a site for your products? Done! How about a business idea of an innovative social media*/}
+                {/*        app? Done! Anything you say, I make it. Don’t take my word for it, let my testimonials*/}
+                {/*        speak for themselves.*/}
+                {/*    </p>*/}
+                {/*</div>*/}
 
                 <div className={'grid md:grid-cols-2 my-20 gap-8'}>
 

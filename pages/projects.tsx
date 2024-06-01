@@ -45,13 +45,13 @@ const ProjectPage: NextPage = () => {
     return (
         <Container>
             <header
-                className="mt-36"
+                className="mt-[80px]"
             >
                 <h1 className="text-4xl lg:text-5xl font-semibold font-header">
                     My Projects
                 </h1>
 
-                <div className="my-10">
+                <div className="my-[30px]">
                     <p className="muted leading-relaxed">
                         I am proud of all my programming projects, but these stand out as particularly challenging and
                         rewarding, helping me grow and push my abilities.
