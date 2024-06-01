@@ -72,7 +72,7 @@ const Home: NextPage = () => {
         <Container>
             <motion.div
                 id="hero-section"
-                className="mt-[40px] bg-primary rounded-[20px] grid md:grid-cols-2 md:grid-rows-1 grid-rows-0"
+                className="relative mt-[40px] bg-primary rounded-[20px] grid md:grid-cols-2 md:grid-rows-1 grid-rows-0"
             >
 
                 <section className={'p-[60px] flex flex-col gap-4'}>
@@ -130,21 +130,23 @@ const Home: NextPage = () => {
                         viewport={{once: true}}
                         transition={{type: "tween", ease: "easeOut"}}
                         className={'absolute bottom-0 -right-[14px]'}
-                        src={"/homepage-pics/hero-image.png"}/>
+                        src={"/hero-image.png"}/>
                 </section>
+
+
+                <MusicPlayerSection/>
             </motion.div>
 
             <section className={'relative overflow-clip'}>
                 <div
-                    className={'absolute bg-gradient-to-r from-primarydark to-transparent h-full w-[150px] z-30'}/>
+                    className={'absolute bg-gradient-to-r from-primarydark to-transparent h-full w-[150px] z-[10]'}/>
 
                 <div
-                    className={'absolute  bg-gradient-to-l from-primarydark to-transparent right-0 h-full w-[150px] z-30'}/>
+                    className={'absolute bg-gradient-to-l from-primarydark to-transparent right-0 h-full w-[150px] z-[10]'}/>
 
                 {/*Scrolling animation: https://www.youtube.com/watch?v=Ot4nZ6UjJLE*/}
                 <motion.div style={{x: xTranslation}} className={'py-6 flex gap-[20px] items-center'} ref={ref}>
-                    {[...skills, ...skills].map(s => <span key={s}
-                                                           className={'font-bold'}>{s.toUpperCase()}</span>)}
+                    {[...skills, ...skills].map(s => <span key={s} className={'font-bold'}>{s.toUpperCase()}</span>)}
                 </motion.div>
             </section>
 
@@ -211,13 +213,13 @@ const Home: NextPage = () => {
                     <TestimonialComponent name={'Mr Tan Hu-Shien'}
                                           position={'Senior Lecturer, Singapore Polytechnic'}
                                           testimonial={'To be frank, even though I as an IT professional mentor to him, I couldn\'t implement such a system myself'}
-                                          image={'/tan-hu-shien.png'}
+                                          image={'/testimonials/tan-hu-shien.png'}
                     />
 
 
                     <TestimonialComponent name={'Mr Dan Toh'} position={'CEO / Founder, RunningStream Ptd Ltd.'}
                                           testimonial={'He was essentially the technical forerunner for the team, enthusiastically paving the way for the team when it comes to new technical\n' +
-                                              'challenges.'} image={'/dan-toh.png'}/>
+                                              'challenges.'} image={'/testimonials/dan-toh.png'}/>
 
                 </div>
 
