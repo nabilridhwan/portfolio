@@ -20,7 +20,7 @@ const projects: Project[] = [
             "Experience the ultimate social truth or dare game with Troof! - see, chat, and react together with your friends! (Currently disabled so save on hosting costs)",
         image: "troof.png",
         link: "https://troof.nabilridhwan.com",
-        technologies: ["React", "Express", "Socket.io", "PostgreSQL", "Supabase"],
+        technologies: ["React", "Express", "Socket.io", "PostgreSQL", "Supabase", "Prisma"],
     },
     {
         title: "Musicn",
@@ -28,7 +28,7 @@ const projects: Project[] = [
             "Get a glimpse into the musical tastes of your friends and discover new tracks with the Next.js-powered Spotify Social app!",
         image: "musicn.png",
         link: "https://musicnapp.com",
-        technologies: ["Next.js", "Spotify API", "Lucia Auth"],
+        technologies: ["Next.js", "Spotify API", "Lucia Auth", "PostgreSQL", "Supabase", "Prisma"],
     },
     {
         title: "Thoughtful.",

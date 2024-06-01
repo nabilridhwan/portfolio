@@ -20,19 +20,18 @@ const ProjectItem = ({image, title, description, technologies, link}: Project) =
                 className="rounded-3xl"
             />
 
-            <section>
-
+            <section className={'flex flex-row flex-wrap gap-2'}>
                 {technologies.map((tech, index) => (
-                    <span
-                        key={index}
-                        className="text-sm bg-primarylight px-2 py-1 mr-2 rounded-full"
+                    <p
+                        key={index + tech}
+                        className="text-sm bg-primarylight px-2 py-1 rounded-full"
                     >
-                    {tech}
-                </span>
+                        {tech}
+                    </p>
                 ))}
             </section>
 
-            <h3 className="text-2xl">{title}</h3>
+            <h3 className="text-2xl font-black">{title}</h3>
             <p className="muted">
                 {description}
             </p>
