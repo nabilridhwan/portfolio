@@ -53,12 +53,8 @@ const ProjectPage: NextPage = () => {
 
                 <div className="my-10">
                     <p className="muted leading-relaxed">
-                        While I am proud of all of the programming projects
-                        that I have done over the years, the following are
-                        some of the ones that stand out to me as
-                        particularly challenging and rewarding. These
-                        projects have helped me grow as a programmer and
-                        allowed me to push the boundaries of my abilities.
+                        I am proud of all my programming projects, but these stand out as particularly challenging and
+                        rewarding, helping me grow and push my abilities.
                     </p>
                 </div>
             </header>
