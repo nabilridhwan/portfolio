@@ -30,14 +30,25 @@ const projects: Project[] = [
         link: "https://musicnapp.com",
         technologies: ["Next.js", "Spotify API", "Lucia Auth", "PostgreSQL", "Supabase", "Prisma"],
     },
+
+
     {
         title: "Thoughtful.",
         description:
             "Cultivate gratitude and positivity with Thoughtful, your personalized journaling companion. Reflect on the good things in life and track your progress.",
-        image: "thoughtful.png",
-        link: "https://github.com/nabilridhwan/Thoughtful",
-        technologies: ["Dart", "Flutter", "Bloc", "SQLite"]
+        image: "thoughtful-ios-promo.png",
+        link: "https://github.com/nabilridhwan/thoughtful-ios",
+        technologies: ["Swift", "SwiftUI", "SwiftData"]
     },
+
+    // {
+    //     title: "Thoughtful.",
+    //     description:
+    //         "Cultivate gratitude and positivity with Thoughtful, your personalized journaling companion. Reflect on the good things in life and track your progress.",
+    //     image: "thoughtful.png",
+    //     link: "https://github.com/nabilridhwan/Thoughtful",
+    //     technologies: ["Dart", "Flutter", "Bloc", "SQLite"]
+    // },
 
     {
         title: "Hacker Hotel",
