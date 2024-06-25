@@ -7,6 +7,15 @@ import {Project} from "../types/Project";
 
 const projects: Project[] = [
     {
+        title: "Thoughtful",
+        description:
+            "Cultivate gratitude and positivity with Thoughtful, your personalized journaling companion. Reflect on the good things in life and track your progress.",
+        image: "thoughtful-ios-promo-2.png",
+        link: "https://thoughtful.nabilridhwan.com",
+        technologies: ["Swift", "SwiftUI", "SwiftData", "WidgetKit", "TipKit"],
+    },
+
+    {
         title: "Similarify",
         description:
             "Expand your musical horizons with the Similarify - find new tunes based on the songs you already love! (Powered by Spotify)",
@@ -31,15 +40,6 @@ const projects: Project[] = [
         technologies: ["Next.js", "Spotify API", "Lucia Auth", "PostgreSQL", "Supabase", "Prisma"],
     },
 
-
-    {
-        title: "Thoughtful.",
-        description:
-            "Cultivate gratitude and positivity with Thoughtful, your personalized journaling companion. Reflect on the good things in life and track your progress.",
-        image: "thoughtful-ios-promo.png",
-        link: "https://github.com/nabilridhwan/thoughtful-ios",
-        technologies: ["Swift", "SwiftUI", "SwiftData"]
-    },
 
     // {
     //     title: "Thoughtful.",
