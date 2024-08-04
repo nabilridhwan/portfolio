@@ -13,6 +13,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tanstack/react-query": "^4.2.1",
     "@tanstack/react-query-devtools": "^4.2.1",
+    "async-g-i-s": "^1.5.3",
     "axios": "1.6.0",
     "classnames": "^2.3.2",
     "framer-motion": "^7.2.0",

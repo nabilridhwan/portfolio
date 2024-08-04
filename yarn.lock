@@ -1114,6 +1114,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async-g-i-s@npm:^1.5.3":
+  version: 1.5.3
+  resolution: "async-g-i-s@npm:1.5.3"
+  peerDependencies:
+    node-fetch: ^2.7.0
+  checksum: f8d772b8fff0b28308e985a85646ccea5c76a5cc617ef29cb35029ac7e7c18a5f8ebb42e29b0cebbc05395961594cc5108836995bbe17f803e5c606ca90c7901
+  languageName: node
+  linkType: hard
+
 "asynckit@npm:^0.4.0":
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
@@ -4053,6 +4062,7 @@ __metadata:
     "@types/node": 18.7.6
     "@types/react": 18.0.17
     "@types/react-dom": 18.0.6
+    async-g-i-s: ^1.5.3
     autoprefixer: ^10.4.8
     axios: 1.6.0
     classnames: ^2.3.2

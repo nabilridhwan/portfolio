@@ -7,6 +7,13 @@ import {Project} from "../types/Project";
 
 const projects: Project[] = [
     {
+        title: "Roast my music taste, please!",
+        description: "Think you got superior musical taste? Let the gods of music be the judge of it. Powered by LangChain, OpenAI and Spotify",
+        image: "roast-my-music-taste-please.png",
+        link: "https://roastmymusictasteplease.vercel.app",
+        technologies: ["Next.js", "Spotify API", "LangChain", "OpenAI", "Vercel"],
+    },
+    {
         title: "Thoughtful",
         description:
             "Cultivate gratitude and positivity with Thoughtful, your personalized journaling companion. Reflect on the good things in life and track your progress.",
