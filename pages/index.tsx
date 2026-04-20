@@ -1,7 +1,12 @@
+import {
+	createImageUrlBuilder,
+	type SanityImageSource,
+} from "@sanity/image-url";
 import { animate, motion, useMotionValue } from "framer-motion";
 import type { NextPage } from "next";
+import { SanityDocument } from "next-sanity";
 import Link from "next/link";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
 	IoArrowForward,
 	IoLogoGithub,
@@ -14,27 +19,54 @@ import Figure from "../components/homepage/Figure";
 import MusicPlayerSection from "../components/homepage/MusicPlayer";
 import Swish from "../components/homepage/Swish";
 import Testimonial from "../components/homepage/Testimonial";
-
-const skills = [
-	"TypeScript",
-	"JavaScript",
-	"React",
-	"Native",
-	"Mobile",
-	"SQL",
-	"Supabase",
-	"AWS",
-	"Node.js",
-	"Nest.js",
-	"Next.js",
-	"Dart",
-	"Flutter",
-	"Python",
-	"Swift",
-	"Java",
-];
+import { client } from "../sanity-client";
 
 const Home: NextPage = () => {
+	const { dataset, projectId } = client.config();
+	const [testimonials, setTestimonials] = useState<SanityDocument[]>([]);
+	const [skills, setSkills] = useState<string[]>([]);
+
+	const urlFor = useCallback(
+		(source: SanityImageSource) => {
+			if (!projectId || !dataset) return null;
+			return createImageUrlBuilder({ projectId, dataset }).image(source);
+		},
+		[projectId, dataset],
+	);
+
+	useEffect(() => {
+		const QUERY = `*[_type == "overallTechStack"][0] {skills}`;
+		(async () => {
+			const skillsData = await client.fetch<{ skills: string[] }>(QUERY);
+
+			console.log(skillsData.skills);
+			setSkills(skillsData.skills);
+		})();
+	}, [urlFor]);
+
+	useEffect(() => {
+		const QUERY = `*[
+  _type == "testimonial"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, image, testimonial, name, publishedAt}`;
+		(async () => {
+			const testimonialData = await client.fetch<SanityDocument[]>(
+				QUERY,
+				{},
+			);
+
+			const updatedProjects = testimonialData.map((p) => {
+				return {
+					...p,
+					image: urlFor(p.image)?.width(1200).url() ?? undefined,
+				};
+			});
+
+			console.log(updatedProjects);
+			setTestimonials(updatedProjects);
+		})();
+	}, [urlFor]);
+
 	// Scrolling animation: https://www.youtube.com/watch?v=Ot4nZ6UjJLE
 	const [ref, { width }] = useMeasure();
 	const xTranslation = useMotionValue(0);
@@ -151,7 +183,7 @@ const Home: NextPage = () => {
 					className={"py-6 flex gap-[20px] items-center"}
 					ref={ref}
 				>
-					{[...skills, ...skills].map((s) => (
+					{[...skills].map((s) => (
 						<span key={s} className={"font-bold"}>
 							{s.toUpperCase()}
 						</span>
@@ -235,24 +267,15 @@ const Home: NextPage = () => {
 				{/*</div>*/}
 
 				<div className={"grid md:grid-cols-2 my-20 gap-8"}>
-					<Testimonial
-						name={"Mr Tan Hu-Shien"}
-						position={"Senior Lecturer, Singapore Polytechnic"}
-						testimonial={
-							"To be frank, even though I as an IT professional mentor to him, I couldn't implement such a system myself"
-						}
-						image={"/testimonials/tan-hu-shien.png"}
-					/>
-
-					<Testimonial
-						name={"Mr Dan Toh"}
-						position={"CEO/Founder, RunningStream Ptd Ltd."}
-						testimonial={
-							"He was essentially the technical forerunner for the team, enthusiastically paving the way for the team when it comes to new technical\n" +
-							"challenges."
-						}
-						image={"/testimonials/dan-toh.png"}
-					/>
+					{testimonials.map((testimonial) => (
+						<Testimonial
+							key={testimonial._id}
+							name={testimonial.name}
+							position={testimonial.position}
+							testimonial={testimonial.testimonial}
+							image={testimonial.image}
+						/>
+					))}
 				</div>
 			</div>
 		</Container>

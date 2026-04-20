@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 interface TestimonialComponentProps {
 	name: string;
 	position: string;
@@ -15,7 +13,7 @@ export default function Testimonial(props: TestimonialComponentProps) {
 			</p>
 
 			<div className="mt-3 flex items-center gap-2">
-				<Image
+				<img
 					width={40}
 					height={40}
 					src={props.image}
