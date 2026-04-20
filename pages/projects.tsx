@@ -57,7 +57,7 @@ const ProjectPage: NextPage = () => {
 				</div>
 			</header>
 
-			<div className="lg:grid grid-cols-3 gap-10 mb-10 space-y-10 lg:space-y-0">
+			<div className="lg:grid grid-cols-2 gap-10 mb-10 space-y-10 lg:space-y-0">
 				{projectsSanity.map((project, index) => (
 					// eslint-disable-next-line react/jsx-no-undef
 					// <ProjectItem {...project} key={index} />
