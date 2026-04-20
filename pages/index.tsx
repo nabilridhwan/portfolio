@@ -48,7 +48,7 @@ const Home: NextPage = () => {
 		const QUERY = `*[
   _type == "testimonial"
   && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, image, testimonial, name, publishedAt}`;
+]|order(publishedAt desc)[0...12]{_id, image, testimonial, name, role, publishedAt}`;
 		(async () => {
 			const testimonialData = await client.fetch<SanityDocument[]>(
 				QUERY,
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
 				className="relative mt-[40px] bg-primary rounded-[20px] grid md:grid-cols-2 md:grid-rows-1 grid-rows-0"
 			>
 				<section className={"p-[60px] flex flex-col gap-4"}>
-					<h1 className="relative font-extrabold text-[50px] lg:text-[90px] leading-[40px] lg:leading-[70px] drop-shadow-[0_0.2px_1.2px_rgba(0,0,0,0.8)]">
+					<h1 className="relative font-extrabold text-[50px] lg:text-[90px] leading-[40px] lg:leading-[70px] drop-shadow-[0_0.2px_1.2px_rgba(0,0,0,0.8)] text-shadow-[0_0px_0px_rgba(0,0,0,1)] text-shadow-black">
 						Nabil
 						<br />
 						Ridhwan
@@ -114,20 +114,22 @@ const Home: NextPage = () => {
 					</h1>
 
 					<p className="leading-relaxed mt-8">
-						{age} years old and a software engineer based in
-						sunny-side Singapore. Incoming Undergraduate at
-						Singapore Management University (SMU), pursuing
-						Bachelors of Science in Computer Science.
+						I enjoy building products that are simple, useful, and a
+						little fun. Incoming Computer Science undergraduate at
+						SMU
 					</p>
 
 					<section className={"my-5"}>
 						<Link href={"mailto:nabridhwan+p@gmail.com"}>
 							<span
-								className={"flex flex-row items-center gap-2"}
+								className={
+									"flex flex-row items-center gap-2 cursor-pointer"
+								}
 							>
 								<IoArrowForward size={22} />
 								<p className={"font-bold "}>
-									Got an idea? Let&apos;s build it together
+									If you&apos;ve got an idea, I&apos;d love to
+									help bring it to life
 								</p>
 							</span>
 						</Link>
@@ -203,24 +205,9 @@ const Home: NextPage = () => {
 						viewport={{ once: true }}
 					>
 						<Figure
-							number={"3+"}
-							caption={"Years of Professional Experience"}
-						/>
-					</motion.div>
-
-					<motion.div
-						initial={{ opacity: 0, y: 100 }}
-						transition={{ type: "tween", ease: "easeOut" }}
-						viewport={{ once: true }}
-						whileInView={{
-							opacity: 1,
-							y: 0,
-						}}
-					>
-						<Figure
-							number={"5+"}
+							number={`${new Date().getFullYear() - 2021}+`}
 							caption={
-								"Clients helped, turning their ideas into a reality"
+								"years building and shipping real-world projects"
 							}
 						/>
 					</motion.div>
@@ -236,7 +223,9 @@ const Home: NextPage = () => {
 					>
 						<Figure
 							number={"6+"}
-							caption={"Years of Programming Experience"}
+							caption={
+								"clients I've worked with to turn ideas into real products"
+							}
 						/>
 					</motion.div>
 
@@ -250,10 +239,23 @@ const Home: NextPage = () => {
 						}}
 					>
 						<Figure
-							number={"40+"}
-							caption={
-								"Funny jokes made – you gotta trust me on this one"
-							}
+							number={`${new Date().getFullYear() - 2019}+`}
+							caption={"years of programming experience"}
+						/>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 100 }}
+						transition={{ type: "tween", ease: "easeOut" }}
+						viewport={{ once: true }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+						}}
+					>
+						<Figure
+							number={"3+"}
+							caption={"funny jokes made — results may vary"}
 						/>
 					</motion.div>
 				</div>
@@ -271,7 +273,7 @@ const Home: NextPage = () => {
 						<Testimonial
 							key={testimonial._id}
 							name={testimonial.name}
-							position={testimonial.position}
+							position={testimonial.role}
 							testimonial={testimonial.testimonial}
 							image={testimonial.image}
 						/>
