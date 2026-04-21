@@ -1,7 +1,10 @@
-import {useEffect, useState} from "react";
+"use client";
+
 import {useQuery} from "@tanstack/react-query";
-import getRecentlyPlayedSongs from "../../services/getRecentlyPlayedSongs.service";
+import Image from "next/image";
 import Link from "next/link";
+import {useEffect, useState} from "react";
+import getRecentlyPlayedSongs from "../../services/getRecentlyPlayedSongs.service";
 import {MusicPlayerProps} from "./CurrentlyPlayed";
 
 export function RecentlyPlayed({setError, setType}: MusicPlayerProps) {
@@ -11,23 +14,21 @@ export function RecentlyPlayed({setError, setType}: MusicPlayerProps) {
     const [artistString, setArtistString] = useState("");
     const [playedAt, setPlayedAt] = useState("");
 
-    const {data, isLoading, status} = useQuery(
-        ["getRecentlyPlayedSongs"],
-        async () => await getRecentlyPlayedSongs(),
-        {
-            refetchOnMount: true,
-            refetchOnWindowFocus: true,
-            staleTime: 1000 * 15,
-        }
-    );
+    const {data, status} = useQuery({
+        queryKey: ["getRecentlyPlayedSongs"],
+        queryFn: async () => await getRecentlyPlayedSongs(),
+        refetchOnMount: true,
+        refetchOnWindowFocus: true,
+        staleTime: 1000 * 15,
+    });
 
     useEffect(() => {
-        if (status === "loading") {
+        if (status === "pending") {
             setType('recent');
         }
 
         if (status === "success") {
-            if (Object.keys(data).length === 0) {
+            if (!data || Object.keys(data).length === 0) {
                 setError(true);
                 return;
             }
@@ -53,16 +54,20 @@ export function RecentlyPlayed({setError, setType}: MusicPlayerProps) {
         if (status === "error") {
             setError(true);
         }
-    }, [status, data]);
+    }, [data, setError, setType, status]);
 
     return (
         <Link href={spotifyLink}>
             <div className="flex items-center gap-3 cursor-pointer">
-                <img
-                    src={imageUrl}
-                    alt={songName}
-                    className="aspect-square w-[30px] rounded-md border border-white"
-                />
+                {imageUrl && (
+                    <Image
+                        src={imageUrl}
+                        alt={songName}
+                        width={30}
+                        height={30}
+                        className="aspect-square rounded-md border border-white"
+                    />
+                )}
 
                 <div className={'flex-col flex gap-0'}>
                     <p className="italic font-bold text-sm line-clamp-1">

@@ -1,7 +1,9 @@
+ "use client";
+
 import classNames from "classnames";
 import {motion} from "framer-motion";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import {usePathname} from "next/navigation";
 import {ReactNode} from "react";
 
 interface NavbarLink {
@@ -36,7 +38,8 @@ const navbarItems: NavbarLink[] = [
 ];
 
 const NavigationBar = () => {
-    const router = useRouter();
+    const pathname = usePathname();
+
     return (
         <nav
             className="bg-primarylight w-fit p-5 py-0 my-[20px] drop-shadow-[0px_0px_30px_rgba(0,0,0,1)] rounded-full border border-muted/20 text-sm overflow-hidden fixed bottom-0 z-[999]">
@@ -48,18 +51,18 @@ const NavigationBar = () => {
                     >
                         <Link href={item.link} className={`py-3 transition-all ${classNames({
                             "font-bold text-white/80":
-                                router.route === item.link,
+                                pathname === item.link,
                         })}`}>
                             {item.displayItem}
                         </Link>
 
                         <motion.div
-                            key={router.route}
+                            key={pathname}
                             initial={{height: 0, opacity: 0}}
                             animate={{
                                 opacity:
-                                    router.route === item.link ? "100" : "0",
-                                y: router.route === item.link ? "0" : "-10",
+                                    pathname === item.link ? "100" : "0",
+                                y: pathname === item.link ? "0" : "-10",
                             }}
                             className="w-full bg-accent absolute bottom-0 blur-sm h-px"
                         />

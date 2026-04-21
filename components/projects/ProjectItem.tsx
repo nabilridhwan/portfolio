@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { TbExternalLink } from "react-icons/tb";
 import { Project } from "../../types/Project";
@@ -11,10 +12,12 @@ const ProjectItem = ({
 }: Project) => {
 	return (
 		<div className="space-y-2">
-			<img
+			<Image
 				src={image}
 				alt={`Promo image for project named ${title}`}
-				className="rounded-3xl"
+				width={1200}
+				height={800}
+				className="rounded-3xl h-auto w-full"
 			/>
 
 			<h3 className="text-2xl font-black">{title}</h3>

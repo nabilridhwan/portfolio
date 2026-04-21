@@ -1,7 +1,10 @@
-import type {NextPage} from "next";
 import {ReactNode} from "react";
 
-const Container: NextPage<{ children: ReactNode }> = ({children}) => {
+interface ContainerProps {
+    children: ReactNode;
+}
+
+const Container = ({children}: ContainerProps) => {
     return (
         <div className="max-w-6xl mx-auto px-[30px]">
             {children}
