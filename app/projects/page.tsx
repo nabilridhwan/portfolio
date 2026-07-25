@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import { SanityDocument } from "next-sanity";
-import Container from "../../components/Container";
-import ProjectItem from "../../components/projects/ProjectItem";
-import { client, urlFor } from "../../sanity-client";
+import type { Metadata } from 'next';
+import { SanityDocument } from 'next-sanity';
+import Container from '../../components/Container';
+import ProjectItem from '../../components/projects/ProjectItem';
+import { client, urlFor } from '../../sanity-client';
 
 export const metadata: Metadata = {
-	title: "Projects",
+	title: 'Projects',
 };
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 async function getProjects() {
 	const query = `*[
@@ -20,7 +20,7 @@ async function getProjects() {
 	return projects.map((project) => ({
 		title: project.title,
 		description: project.description,
-		image: urlFor(project.image)?.width(1200).url() ?? "",
+		image: urlFor(project.image)?.width(1200).url() ?? '',
 		link: project.link,
 		technologies: project.technologies ?? [],
 	}));
@@ -32,15 +32,12 @@ export default async function ProjectsPage() {
 	return (
 		<Container>
 			<header className="mt-[80px]">
-				<h1 className="text-4xl lg:text-5xl font-semibold font-header">
-					My Projects
-				</h1>
+				<h1 className="text-4xl lg:text-5xl font-semibold font-header">My Projects</h1>
 
 				<div className="my-[30px]">
 					<p className="muted leading-relaxed">
-						I am proud of all my programming projects, but these stand
-						out as particularly challenging and rewarding, helping me
-						grow and push my abilities.
+						I am proud of all my programming projects, but these stand out as particularly challenging and rewarding, helping me grow and
+						push my abilities.
 					</p>
 				</div>
 			</header>

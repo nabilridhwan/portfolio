@@ -1,12 +1,12 @@
-import { SanityDocument } from "next-sanity";
-import HomePage from "./home-page";
-import { client, urlFor } from "../sanity-client";
+import { SanityDocument } from 'next-sanity';
+import HomePage from './home-page';
+import { client, urlFor } from '../sanity-client';
 
 export const metadata = {
-	title: "Home",
+	title: 'Home',
 };
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 async function getSkills() {
 	const query = `*[_type == "overallTechStack"][0] {skills}`;
@@ -26,15 +26,12 @@ async function getTestimonials() {
 		name: testimonial.name,
 		role: testimonial.role,
 		testimonial: testimonial.testimonial,
-		image: urlFor(testimonial.image)?.width(1200).url() ?? "",
+		image: urlFor(testimonial.image)?.width(1200).url() ?? '',
 	}));
 }
 
 export default async function Page() {
-	const [skills, testimonials] = await Promise.all([
-		getSkills(),
-		getTestimonials(),
-	]);
+	const [skills, testimonials] = await Promise.all([getSkills(), getTestimonials()]);
 
 	return <HomePage skills={skills} testimonials={testimonials} />;
 }

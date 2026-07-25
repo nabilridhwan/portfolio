@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import profileImage from "../../public/3.png";
-import { IoDownloadOutline } from "react-icons/io5";
-import Container from "../../components/Container";
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import profileImage from '../../public/3.png';
+import { IoDownloadOutline } from 'react-icons/io5';
+import Container from '../../components/Container';
 
 export const metadata: Metadata = {
-	title: "About",
+	title: 'About',
 };
 
 export default function AboutPage() {
@@ -14,16 +14,12 @@ export default function AboutPage() {
 			<header className="mt-36 mb-14">
 				<div className="lg:grid grid-cols-3 gap-10 justify-center items-center">
 					<div className="col-span-2">
-						<h1 className="text-4xl lg:text-5xl font-semibold font-header">
-							Hi, I&apos;m Nabil, a software engineer based in
-							Singapore.
-						</h1>
+						<h1 className="text-4xl lg:text-5xl font-semibold font-header">Hi, I&apos;m Nabil, a software engineer based in Singapore.</h1>
 
 						<div className="my-10">
 							<p className="muted leading-relaxed text-justify">
-								Hello, my name is Nabil and I enjoy creating side
-								hobby projects to explore new technologies and stay
-								up-to-date with the latest developments in the field.
+								Hello, my name is Nabil and I enjoy creating side hobby projects to explore new technologies and stay up-to-date with the
+								latest developments in the field.
 							</p>
 
 							<div className="my-5 text-sm">
@@ -40,11 +36,7 @@ export default function AboutPage() {
 
 					<div className="relative">
 						<div className="mx-auto w-52 lg:w-60 rotate-3 shadow-2xl flex-none">
-							<Image
-								src={profileImage}
-								alt="Nabil"
-								className="h-auto w-full"
-							/>
+							<Image src={profileImage} alt="Nabil" className="h-auto w-full" />
 						</div>
 					</div>
 				</div>
@@ -52,53 +44,37 @@ export default function AboutPage() {
 
 			<div className="space-y-14">
 				<div className="space-y-4">
-					<h3 className="font-body font-semibold text-2xl my-2">
-						Why I love Programming
-					</h3>
+					<h3 className="font-body font-semibold text-2xl my-2">Why I love Programming</h3>
 					<p className="text-muted text-justify">
-						My enthusiasm for programming revolved around my interest
-						in computers and the feeling of satisfaction and
-						contentment overcoming a big obstacle. Programming allows
-						me to do that! Both the brief mental strain of challenges
-						faced in programming and the feeling of joy gives me the
-						adrenaline rush.
+						My enthusiasm for programming revolved around my interest in computers and the feeling of satisfaction and contentment
+						overcoming a big obstacle. Programming allows me to do that! Both the brief mental strain of challenges faced in programming and
+						the feeling of joy gives me the adrenaline rush.
 					</p>
 				</div>
 
 				<div className="space-y-4">
-					<h3 className="font-body font-semibold text-2xl my-2">
-						In the beginning...
-					</h3>
+					<h3 className="font-body font-semibold text-2xl my-2">In the beginning...</h3>
 					<p className="text-muted text-justify">
-						I dived into the world of web development around in 2018,
-						starting with HTML and all the way to creating full stack
-						web applications using the MERN stack (MongoDB, Express,
-						React and Node.JS)
+						I dived into the world of web development around in 2018, starting with HTML and all the way to creating full stack web
+						applications using the MERN stack (MongoDB, Express, React and Node.JS)
 					</p>
 
 					<p className="text-muted text-justify">
-						Before 2018, I was still finding my place in the
-						programming world, trying different languages and getting
-						excited when I printed &quot;Hello, World!&quot; in Java!
+						Before 2018, I was still finding my place in the programming world, trying different languages and getting excited when I
+						printed &quot;Hello, World!&quot; in Java!
 					</p>
 
 					<p className="text-muted text-justify">
-						I love creating my own projects because I can share them
-						with the world, and I can be proud of them.
+						I love creating my own projects because I can share them with the world, and I can be proud of them.
 					</p>
 				</div>
 
 				<div className="space-y-4">
-					<h3 className="font-body font-semibold text-2xl my-2">
-						The Present
-					</h3>
+					<h3 className="font-body font-semibold text-2xl my-2">The Present</h3>
 					<p className="text-muted text-justify">
-						I am currently a student from Singapore Polytechnic
-						pursuing in Information Technology. By being inside this
-						course, I get to learn the fundamental concept of
-						programming that you&apos;ll most likely miss when you
-						self-learn. I learn more about Object Oriented Programming
-						and more.
+						I am currently a student from Singapore Polytechnic pursuing in Information Technology. By being inside this course, I get to
+						learn the fundamental concept of programming that you&apos;ll most likely miss when you self-learn. I learn more about Object
+						Oriented Programming and more.
 					</p>
 				</div>
 			</div>

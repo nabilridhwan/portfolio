@@ -1,38 +1,45 @@
-import type { Metadata } from "next";
-import Footer from "../components/Footer";
-import NavigationBar from "../components/NavigationBar";
-import Providers from "./providers";
-import "../styles/globals.css";
+import type { Metadata } from 'next';
+import Footer from '../components/Footer';
+import NavigationBar from '../components/NavigationBar';
+import '../styles/globals.css';
+import Providers from './providers';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+
+const plusJakarta = Plus_Jakarta_Sans({
+	subsets: ['latin'],
+	variable: '--font-plus-jakarta',
+	display: 'swap',
+});
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://nabilridhwan.com"),
+	metadataBase: new URL('https://nabilridhwan.com'),
 	title: {
-		default: "Nabil Ridhwan | Software Engineer in sunny-side Singapore!",
-		template: "%s | Nabil Ridhwan",
+		default: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
+		template: '%s | Nabil Ridhwan',
 	},
 	description:
-		"A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.",
+		'A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.',
 	openGraph: {
-		title: "Nabil Ridhwan | Software Engineer in sunny-side Singapore!",
+		title: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
 		description:
-			"A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.",
-		url: "https://nabilridhwan.com",
-		type: "website",
+			'A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.',
+		url: 'https://nabilridhwan.com',
+		type: 'website',
 		images: [
 			{
-				url: "/og-image.png",
+				url: '/og-image.png',
 				width: 1200,
 				height: 630,
-				alt: "Nabil Ridhwan | Software Engineer in sunny-side Singapore!",
+				alt: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
 			},
 		],
 	},
 	twitter: {
-		card: "summary_large_image",
-		title: "Nabil Ridhwan | Software Engineer in sunny-side Singapore!",
+		card: 'summary_large_image',
+		title: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
 		description:
-			"A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.",
-		images: ["/og-image.png"],
+			'A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.',
+		images: ['/og-image.png'],
 	},
 };
 
@@ -42,7 +49,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className={plusJakarta.variable}>
 			<body>
 				<Providers>
 					<div className="flex items-center justify-center w-full mt-10">
