@@ -12,7 +12,7 @@
 }
 
 * {
-	@apply font-body z-20;
+	@apply font-body;
 }
 body {
 	@apply text-textcolor;
@@ -31,10 +31,27 @@ h6 {
 	@apply font-header;
 }
 
+.hero-title {
+	color: #ffffff;
+	font-size: clamp(3.65rem, 7.4vw, 5.8rem);
+	letter-spacing: -0.075em;
+	line-height: 0.79;
+	-webkit-text-stroke: 7px #08080d;
+	paint-order: stroke fill;
+	filter: drop-shadow(5px 7px 0 #08080d);
+}
+
 p {
 	@apply leading-relaxed;
 }
 
 .muted {
 	@apply text-[#8C8C8C];
+}
+
+@media (max-width: 767px) {
+	.hero-title {
+		-webkit-text-stroke-width: 5px;
+		filter: drop-shadow(3px 4px 0 #08080d);
+	}
 }
