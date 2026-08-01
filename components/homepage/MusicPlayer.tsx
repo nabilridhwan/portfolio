@@ -1,12 +1,9 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import {useQuery} from "@tanstack/react-query";
 import getCurrentlyListeningSong, {TrackAPIResponse} from "../../services/getCurrentlyListeningSong.service";
 import Link from "next/link";
 import AudioAnimated from "../AudioAnimated";
 import Image from "next/image";
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // Component to wrap and fetch data
 const MusicPlayerSection = () => {
@@ -19,15 +16,17 @@ const MusicPlayerSection = () => {
 		staleTime: 1000 * 15,
 	});
 
-	const imageUrl = data?.track.images[1]['#text']
-	const link = ''
-	const songName = data?.track.name
-	const artistString = data?.track.artistName
-	const isCurrentlyPlaying = !!data?.track.isCurrentlyPlaying
-
-	if (error || status !== 'success') {
+	if (error || status !== 'success' || !data) {
 		return <></>;
 	}
+
+	const track = data.track
+
+	const imageUrl = track.images[1]['#text']
+	const link = ''
+	const songName = track.name
+	const artistString = track.artistName
+	const isCurrentlyPlaying = track.isCurrentlyPlaying
 
 	return (
 		<motion.div
