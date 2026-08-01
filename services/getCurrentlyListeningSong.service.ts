@@ -1,8 +1,17 @@
-import axios from 'axios';
-export default async function getCurrentlyListeningSong() {
-	const data = await axios.get('/api/currently_listening', {
-		method: 'GET',
-	});
+export interface TrackAPIResponse {
+	track: {
+		name: string;
+		artistName: string;
+		images: {
+			size: "small" | "medium" | "large" | "extralarge";
+			"#text": string;
+		}[];
+		isCurrentlyPlaying: boolean;
+	};
+}
 
-	return data.data.data;
+export default async function getCurrentlyListeningSong() {
+	return fetch('https://track.nabilridhwan.com', {
+		method: 'GET',
+	}).then(res => res.json()) as unknown as TrackAPIResponse
 }

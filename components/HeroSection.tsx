@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoNewspaper } from 'react-icons/io5';
+import MusicPlayerSection from "./homepage/MusicPlayer";
 
 const HeroSection = () => {
 	return (
@@ -66,6 +67,10 @@ const HeroSection = () => {
 					/>
 				</motion.div>
 			</div>
+
+
+			<MusicPlayerSection />
+
 		</motion.div>
 	);
 };

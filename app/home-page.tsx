@@ -11,6 +11,7 @@ import Figure from '../components/homepage/Figure';
 import Testimonial from '../components/homepage/Testimonial';
 import HeroSection from '../components/HeroSection';
 import SkillSection from '../components/SkillSection';
+import MusicPlayerSection from "../components/homepage/MusicPlayer";
 
 interface HomePageProps {
 	skills: string[];

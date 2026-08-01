@@ -1,17 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import CurrentlyPlaying from '../music-player/CurrentlyPlayed';
-import { RecentlyPlayed } from '../music-player/RecentlyPlayed';
+import {useQuery} from "@tanstack/react-query";
+import getCurrentlyListeningSong, {TrackAPIResponse} from "../../services/getCurrentlyListeningSong.service";
+import Link from "next/link";
+import AudioAnimated from "../AudioAnimated";
+import Image from "next/image";
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 // Component to wrap and fetch data
 const MusicPlayerSection = () => {
-	const [error, setError] = useState(false);
-	const [type, setType] = useState<'current' | 'recent'>('current');
+	const { data, status, error } = useQuery<TrackAPIResponse>({
+		queryKey: ['getCurrentlyListeningSong'],
+		queryFn: getCurrentlyListeningSong,
+		refetchOnMount: true,
+		refetchOnWindowFocus: true,
+		refetchInterval: 1000 * 15,
+		staleTime: 1000 * 15,
+	});
 
-	if (error) {
+	const imageUrl = data?.track.images[1]['#text']
+	const link = ''
+	const songName = data?.track.name
+	const artistString = data?.track.artistName
+	const isCurrentlyPlaying = !!data?.track.isCurrentlyPlaying
+
+	if (error || status !== 'success') {
 		return <></>;
 	}
 
@@ -32,12 +46,26 @@ const MusicPlayerSection = () => {
 				y: 30,
 				opacity: 0,
 			}}
-			className="w-fit max-w-[310px] absolute -top-5 -right-5"
+			className="w-fit max-w-[320px] absolute -top-5 -right-5"
 		>
-			<div className="rounded-[20px] border-[4px] drop-shadow-[5px_5px_0px_rgba(0,0,0,1)] border-black px-4 py-2 bg-accent">
-				{type === 'current' && !error && <CurrentlyPlaying setError={setError} setType={setType} />}
+			<div className="rounded-[20px] border-4 drop-shadow-[5px_5px_0px_rgba(0,0,0,1)] border-black px-4 py-2 bg-accent">
+				<Link href={link}>
+					<div className="flex items-center gap-3 cursor-pointer">
+						{isCurrentlyPlaying && (
+							<AudioAnimated />
+						)}
 
-				{(type === 'recent' || error) && <RecentlyPlayed setError={setError} setType={setType} />}
+						{imageUrl && (
+							<Image src={imageUrl} alt={songName || 'hi'} width={30} height={30} className="aspect-square rounded-md border border-white/50" />
+						)}
+
+						<div className={'flex-col flex gap-0'}>
+							<p className="font-bold text-sm line-clamp-1">{songName}</p>
+
+							<span className={'text-xs text-white/70'}>{artistString}</span>
+						</div>
+					</div>
+				</Link>
 			</div>
 		</motion.div>
 	);
