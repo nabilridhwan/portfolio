@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState} from 'react';
 
 interface NavbarLink {
 	icon?: ReactNode;
@@ -40,8 +40,25 @@ const navbarItems: NavbarLink[] = [
 const NavigationBar = () => {
 	const pathname = usePathname();
 
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 50) {
+				setIsScrolled(true);
+			} else {
+				setIsScrolled(false);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
 	return (
-		<nav className="bg-primarylight w-fit p-5 py-0 drop-shadow-[0px_0px_30px_rgba(0,0,0,1)] rounded-full border border-muted/20 text-sm overflow-hidden z-100">
+		<nav className={classNames("transition-all duration-300 border border-muted/0 w-fit p-5 py-0 drop-shadow-[0px_0px_30px_rgba(0,0,0,1)] rounded-full text-sm overflow-hidden z-100", {
+			"bg-primarylight border-muted/20": isScrolled
+		})}>
 			<ul className="flex gap-8">
 				{navbarItems.map((item, index) => (
 					<li key={index} className=" text-muted py-3 hover:text-white transition-all relative">

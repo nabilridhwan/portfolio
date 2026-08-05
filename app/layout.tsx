@@ -52,7 +52,7 @@ export default function RootLayout({
 		<html lang="en" className={plusJakarta.variable}>
 			<body>
 				<Providers>
-					<div className="flex items-center justify-center w-full mt-10">
+					<div className="sticky top-4 z-999 flex items-center justify-center w-full mt-10">
 						<NavigationBar />
 					</div>
 					{children}
