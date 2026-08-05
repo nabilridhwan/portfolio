@@ -19,7 +19,7 @@ const HeroSection = () => {
 					</h1>
 
 					<p className="mt-12 max-w-[410px] text-[15px] leading-[1.58] text-white/95 md:text-base">
-						I’m a Computer Science undergraduate at SMU, building simple, useful digital products with a little personality.
+						I’m a Computer Science undergraduate at SMU, building fun and simple digital products with a little personality.
 					</p>
 
 					<Link
@@ -50,8 +50,8 @@ const HeroSection = () => {
 				</section>
 
 				<motion.div
-					initial={{ opacity: 0, scale: 0.94, y: 24 }}
-					whileInView={{ opacity: 1, scale: 1, y: 0 }}
+					initial={{filter: "blur(10px)", opacity: 0, scale: 0.94, y: 24 }}
+					whileInView={{filter: "blur(0px)", opacity: 1, scale: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ type: 'tween', duration: 0.55, ease: 'easeOut' }}
 					className="pointer-events-none absolute -bottom-1 -right-[12%] z-10 w-[118%] sm:-right-[4%] sm:w-[86%] md:-right-[4%] md:w-[62%] lg:-right-[2%] lg:w-[59%]"

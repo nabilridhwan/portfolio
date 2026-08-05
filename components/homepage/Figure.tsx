@@ -19,6 +19,7 @@ export default function Figure({ number, caption }: FigureProps) {
 					className={'text-7xl font-bold bg-gradient-to-b from-white to-primarydark bg-clip-text text-transparent'}
 					end={parseInt(number)}
 					duration={2}
+					delay={0.4}
 					separator=","
 				/>
 				+

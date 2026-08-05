@@ -51,37 +51,37 @@ export default function HomePage({ skills, testimonials }: HomePageProps) {
 			<div className="lg:mx-[70px]">
 				<div className="grid md:grid-cols-4 my-10 gap-10">
 					<motion.div
-						initial={{ opacity: 0, y: 100 }}
-						transition={{ type: 'tween', ease: 'easeOut' }}
-						whileInView={{ opacity: 1, y: 0 }}
+						initial={{filter: "blur(10px)", opacity: 0, y: 100 }}
+						whileInView={{filter: "blur(0px)", opacity: 1, y: 0 }}
+						transition={{ type: 'tween', ease: 'easeOut', duration: 0.4, delay:0.2 }}
 						viewport={{ once: true }}
 					>
 						<Figure number={`${new Date().getFullYear() - 2021}+`} caption="years building and shipping real-world projects" />
 					</motion.div>
 
 					<motion.div
-						initial={{ opacity: 0, y: 100 }}
-						transition={{ type: 'tween', ease: 'easeOut' }}
+						initial={{filter: "blur(10px)", opacity: 0, y: 100 }}
+						whileInView={{filter: "blur(0px)", opacity: 1, y: 0 }}
+						transition={{ type: 'tween', ease: 'easeOut', duration: 0.4, delay:0.4 }}
 						viewport={{ once: true }}
-						whileInView={{ opacity: 1, y: 0 }}
 					>
 						<Figure number="6+" caption="clients I've worked with to turn ideas into real products" />
 					</motion.div>
 
 					<motion.div
-						initial={{ opacity: 0, y: 100 }}
-						transition={{ type: 'tween', ease: 'easeOut' }}
+						initial={{filter: "blur(10px)", opacity: 0, y: 100 }}
+						whileInView={{filter: "blur(0px)", opacity: 1, y: 0 }}
+						transition={{ type: 'tween', ease: 'easeOut', duration: 0.4, delay:0.6 }}
 						viewport={{ once: true }}
-						whileInView={{ opacity: 1, y: 0 }}
 					>
 						<Figure number={`${new Date().getFullYear() - 2019}+`} caption="years of programming experience" />
 					</motion.div>
 
 					<motion.div
-						initial={{ opacity: 0, y: 100 }}
-						transition={{ type: 'tween', ease: 'easeOut' }}
+						initial={{filter: "blur(10px)", opacity: 0, y: 100 }}
+						whileInView={{filter: "blur(0px)", opacity: 1, y: 0 }}
+						transition={{ type: 'tween', ease: 'easeOut', duration: 0.4, delay:0.8 }}
 						viewport={{ once: true }}
-						whileInView={{ opacity: 1, y: 0 }}
 					>
 						<Figure number="3+" caption="funny jokes made - results may vary" />
 					</motion.div>
