@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import {useQuery} from "@tanstack/react-query";
-import getCurrentlyListeningSong, {TrackAPIResponse} from "../../services/getCurrentlyListeningSong.service";
+import getCurrentlyListeningSong from "../../services/getCurrentlyListeningSong.service";
 import Link from "next/link";
-import AudioAnimated from "../AudioAnimated";
+import { Audio } from 'react-loader-spinner';
 import Image from "next/image";
+import {TrackAPIResponse} from "../../types";
 
 // Component to wrap and fetch data
 const MusicPlayerSection = () => {
@@ -16,6 +17,7 @@ const MusicPlayerSection = () => {
 		staleTime: 1000 * 15,
 	});
 
+	// If there is no music, return nothing
 	if (error || status !== 'success' || !data) {
 		return <></>;
 	}
@@ -51,7 +53,7 @@ const MusicPlayerSection = () => {
 				<Link href={link}>
 					<div className="flex items-center gap-3 cursor-pointer">
 						{isCurrentlyPlaying && (
-							<AudioAnimated />
+							<Audio height={15} width={15} color="white" ariaLabel="triangle-loading" />
 						)}
 
 						{imageUrl && (

@@ -1,4 +1,4 @@
-export default interface Testimonial {
+export interface Testimonial {
 	quote: string;
 	name: string;
 	title: string;
