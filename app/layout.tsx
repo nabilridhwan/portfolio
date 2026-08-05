@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 	description:
 		'A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.',
 	openGraph: {
+		siteName: 'Nabil Ridhwan',
 		title: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
 		description:
 			'A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.',
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 		type: 'website',
 		images: [
 			{
-				url: '/og-image.png',
+				url: '/og-image.jpg',
 				width: 1200,
 				height: 630,
 				alt: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
 		title: 'Nabil Ridhwan | Software Engineer in sunny-side Singapore!',
 		description:
 			'A software engineer in sunny-side Singapore. Undergraduate at Singapore Management University pursuing Bachelors in Science, Computer Science.',
-		images: ['/og-image.png'],
+		images: ['/og-image.jpg'],
 	},
 };
 
